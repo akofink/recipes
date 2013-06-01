@@ -1,11 +1,10 @@
 <h1>Listing recipes</h1>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
       <th>Title</th>
       <th>Body</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -13,10 +12,9 @@
 
   <tbody>
     <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.title %></td>
+      <tr class='table-link'>
+        <td><%= link_to recipe.title, recipe %></td>
         <td><%= recipe.body %></td>
-        <td><%= link_to 'Show', recipe %></td>
         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
         <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -26,4 +24,6 @@
 
 <br>
 
-<%= link_to 'New Recipe', new_recipe_path %>
+<%= link_to new_recipe_path do %>
+  <i class='icon-plus-sign'></i> New Recipe
+<% end %>
