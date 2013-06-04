@@ -13,10 +13,10 @@
   <tbody>
     <% @recipes.each do |recipe| %>
       <tr class='table-link'>
-        <td><%= link_to recipe.title, recipe %></td>
+        <td><%= link_to recipe.title, recipe, class: 'no-style' %></td>
         <td><%= recipe.body %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_recipe_path(recipe), class: 'no-style button-link' %></td>
+        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'no-style button-link' %></td>
       </tr>
     <% end %>
   </tbody>
