@@ -15,6 +15,7 @@ gem "twitter-bootstrap-rails"
 gem "less-rails"
 gem "therubyracer"
 gem 'sass-rails'
+gem 'sass'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
