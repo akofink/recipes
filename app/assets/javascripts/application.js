@@ -15,3 +15,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(document).on('ready page:load', function() {
+  $(this).trigger('turbo:ready');
+});

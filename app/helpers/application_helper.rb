@@ -5,7 +5,11 @@ module ApplicationHelper
       autolink: true,
       space_after_headers: true,
       no_intra_emphasis: true,
-      with_toc_data: true
+      with_toc_data: true,
+      tables: true,
+      fenced_code_blocks: true,
+      superscript: true,
+      highlight: true
     ).render(text).html_safe
   end
 end
