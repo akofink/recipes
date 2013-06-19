@@ -5,8 +5,9 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
+  host: localhost
   database: recipes_dev
-  user: akofink
+  user: andrew.kofink
   password: 
 
 # Warning: The database defined as "test" will be erased and
