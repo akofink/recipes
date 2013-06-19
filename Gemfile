@@ -14,6 +14,7 @@ gem 'pg'
 gem "twitter-bootstrap-rails"
 gem "less-rails"
 gem "therubyracer"
+gem 'bootstrap-sass-rails'
 gem 'sass-rails'
 gem 'sass'
 gem 'redcarpet'
