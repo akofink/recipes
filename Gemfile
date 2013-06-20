@@ -9,6 +9,8 @@ gem 'rails', '4.0.0.rc1'
 group :test do
   gem 'sqlite3'
   gem 'guard-rails'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
 end
 gem 'pg'
 
