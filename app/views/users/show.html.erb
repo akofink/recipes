@@ -1,2 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<legend>
+  <%= @user.email %>
+</legend>
+
+<%= link_to User do %>
+  <i class='icon-arrow-left'></i> Back
+<% end %>
+
+<%= link_to edit_user_path(@user) do %>
+  <i class='icon-pencil'></i> Edit
+<% end %>

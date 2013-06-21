@@ -1,2 +1,8 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>Editing user</h1>
+
+<%= render 'form' %>
+<%= render 'destroy' %>
+
+<%= link_to @user do %>
+  <i class='icon-ban-circle'></i> Cancel
+<% end %>
