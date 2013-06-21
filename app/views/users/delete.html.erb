@@ -1,2 +1,4 @@
-<h1>Users#destroy</h1>
-<p>Find me in app/views/users/destroy.html.erb</p>
+<legend>Are you sure you want to delete this user?</legend>
+<%= form_for @user, method: :delete do |f| %>
+  <%= submit_tag 'Delete', class: 'btn' %>
+<% end %>

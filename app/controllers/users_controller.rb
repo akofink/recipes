@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def destroy
     set_user.destroy
+    redirect_to User
   end
 
   def index
@@ -25,7 +26,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by id: params[:id]
+    set_user
+  end
+
+  def delete
+    set_user
   end
 
   private

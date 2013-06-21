@@ -1,8 +1,11 @@
 <h1>Editing user</h1>
 
 <%= render 'form' %>
-<%= render 'destroy' %>
 
 <%= link_to @user do %>
   <i class='icon-ban-circle'></i> Cancel
+<% end %>
+
+<%= link_to 'delete' do %>
+  <i class='icon-remove'></i> Delete
 <% end %>
