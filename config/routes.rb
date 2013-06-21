@@ -5,6 +5,11 @@ Recipes::Application.routes.draw do
     end
   end
 
+  resources :sessions
+  match 'login' => 'sessions#new', via: :get
+  match 'logout' => 'sessions#destroy', via: :get
+
+
   resource :pages
   match 'about' => 'pages#about', via: :get
 

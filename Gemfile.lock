@@ -32,6 +32,7 @@ GEM
       railties (>= 3.1.0)
       sass-rails (>= 3.1.0)
     builder (3.1.4)
+    cancan (1.6.10)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -190,6 +191,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass-rails
+  cancan
   coffee-rails (~> 4.0.0)
   debugger
   guard-rails
