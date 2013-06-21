@@ -8,17 +8,15 @@
   </head>
   <body>
     <header>
-    <%= render 'layouts/header' %>
+    <%= render 'shared/header' %>
     </header>
 
     <div class='container'>
       <div class='row'>
 
-        <div class='span9'>
+        <div class='span8'>
           <%= yield %>
         </div>
-
-        <%= render 'layouts/about_me' %>
 
       </div>
     </div>

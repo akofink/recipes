@@ -5,6 +5,9 @@ Recipes::Application.routes.draw do
     end
   end
 
+  resource :pages
+  match 'about' => 'pages#about', via: :get
+
   resources :recipes
   match 'most_recent' => 'recipes#most_recent', via: :get
 
