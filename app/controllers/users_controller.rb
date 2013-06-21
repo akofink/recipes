@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
   def create
-    User.save!(params)
+    @user = User.create!(user_params)
+    redirect_to @user
   end
 
   def show
-    @user = User.find_by id: params[:id]
+    set_user
   end
 
   def update
-    @user = User.find_by id: params[:id]
+    set_user
   end
 
   def destroy
-    User.find_by(id: params[:id]).destroy
+    set_user.destroy
   end
 
   def index
@@ -25,5 +26,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by id: params[:id]
+  end
+
+  private
+
+  def set_user
+    @user = User.find params[:id]
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end

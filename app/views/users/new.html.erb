@@ -1,2 +1,7 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<legend>New user</legend>
+
+<%= render 'form' %>
+
+<%= link_to users_path do %>
+  <i class='icon-arrow-left'></i> Back
+<% end %>

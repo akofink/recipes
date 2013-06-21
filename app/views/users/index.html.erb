@@ -1,2 +1,21 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th>All Users</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr class='table-link'>
+        <td><%= link_to user.email, user, class: 'no-style button-link' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to new_user_path do %>
+  <i class='icon-plus-sign'></i> New User
+<% end %>
