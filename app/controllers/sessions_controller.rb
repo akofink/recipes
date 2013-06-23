@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+  def initialize
+    super
+    @errors = []
+  end
+
   def new
   end
 
@@ -6,8 +11,8 @@ class SessionsController < ApplicationController
     if u = User.login(params[:email], params[:password])
       redirect_to u
     else
-      flash[:warn] = 'Login failed'
-      redirect_to :login
+      @errors += ['Login failed!']
+      render :new
     end
   end
 

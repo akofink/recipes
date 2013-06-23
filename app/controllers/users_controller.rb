@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
+  def initialize
+    super
+    @errors = []
+  end
+
   def create
-    @user = User.create!(user_params)
-    redirect_to @user
+    @user = User.create(user_params)
+    @errors = @user.errors
+
+    if @errors.any?
+      render :new
+    else
+      render :show
+    end
   end
 
   def show
@@ -10,6 +21,14 @@ class UsersController < ApplicationController
 
   def update
     set_user
+    @user.update(user_params)
+    @errors = @user.errors
+
+    if @errors.any?
+      render :edit
+    else
+      render :show
+    end
   end
 
   def destroy
@@ -40,6 +59,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

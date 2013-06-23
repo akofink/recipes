@@ -1,8 +1,6 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+    <div class="alert alert-error">
       <ul>
         <% @user.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -13,21 +11,32 @@
 
   <fieldset>
     <div class="field controls-row span5">
-      <%= f.text_field :email, placeholder: "email" %>
+      <span class='input-prepend'>
+        <i class="add-on icon-envelope-alt"></i>
+        <%= f.email_field :email, placeholder: "email", required: true %>
+      </span>
+    </div>
+    <div class="field span5">
+      <span class='input-prepend'>
+        <i class="add-on icon-key"></i>
+        <%= f.password_field :password, 
+          placeholder: "password", 
+          title: 'At least one upper case, one lower case, and one symbol',
+          class: "instant-tooltip",
+            'data-container' => 'body'
+        %>
+      </span>
     </div>
     <div class="field controls-row span5">
-      <%= f.password_field :password, 
-        placeholder: "password", 
-        title: 'At least one upper case, one lower case, and one symbol',
-        class: "instant-tooltip"
-      %>
-    </div>
-    <div class="field controls-row span5">
-      <%= f.password_field :password_confirmation, 
-        placeholder: "password_confirmation", 
-        title: 'At least one upper case, one lower case, and one symbol',
-        class: "instant-tooltip"
-      %>
+      <span class='input-prepend'>
+        <i class="add-on icon-key"></i>
+        <%= f.password_field :password_confirmation, 
+          placeholder: "password_confirmation", 
+          title: 'At least one upper case, one lower case, and one symbol',
+          class: "instant-tooltip",
+          'data-container' => 'body'
+        %>
+      </span>
     </div>
     <div class="actions span5">
       <%= f.submit class: 'btn' %>
