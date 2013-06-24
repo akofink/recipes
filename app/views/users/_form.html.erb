@@ -13,7 +13,7 @@
     <div class="field controls-row span5">
       <span class='input-prepend'>
         <i class="add-on icon-envelope-alt"></i>
-        <%= f.email_field :email, placeholder: "email", required: true %>
+        <%= f.text_field :email, placeholder: "email" %>
       </span>
     </div>
     <div class="field span5">
@@ -21,7 +21,7 @@
         <i class="add-on icon-key"></i>
         <%= f.password_field :password, 
           placeholder: "password", 
-          title: 'At least one upper case, one lower case, and one symbol',
+          title: 'At least one upper case, one lower case, and one non-letter',
           class: "instant-tooltip",
             'data-container' => 'body'
         %>
@@ -32,7 +32,7 @@
         <i class="add-on icon-key"></i>
         <%= f.password_field :password_confirmation, 
           placeholder: "password_confirmation", 
-          title: 'At least one upper case, one lower case, and one symbol',
+          title: 'At least one upper case, one lower case, and one non-letter',
           class: "instant-tooltip",
           'data-container' => 'body'
         %>
