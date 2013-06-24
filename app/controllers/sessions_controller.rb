@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     if u = User.login(params[:email], params[:password])
+      login_with_session(u)
       redirect_to u
     else
       @errors += ['Login failed!']
@@ -17,5 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logout
+    redirect_to :root
   end
 end
