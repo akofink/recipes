@@ -5,7 +5,5 @@ describe 'ApplicationController' do
     @ac = ApplicationController.new
   end
 
-  it 'should retrieve the current user' do
-    @ac.current_user
-  end
+  it 'should retrieve the current user'
 end
