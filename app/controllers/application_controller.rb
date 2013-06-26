@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by id: session[:user_id]
   end
   helper_method :current_user
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to :root
+  end
 end
