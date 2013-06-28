@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to :root
+    redirect_back
+  end
+
+  def redirect_back(default = :root)
+    redirect_to request.env['HTTP_REFERER'] ? :back : default
   end
 end
