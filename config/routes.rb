@@ -5,6 +5,7 @@ Recipes::Application.routes.draw do
     end
   end
   match 'signup' => 'users#new', via: :get
+  match 'account' => 'users#show', via: :get
 
   resources :sessions
   match 'login' => 'sessions#new', via: :get, as: :login

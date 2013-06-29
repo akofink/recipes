@@ -21,28 +21,26 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.create(recipe_params)
+    flash[:error] = @recipe.errors.full_messages
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @recipe }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if flash[:error].any?
+      render :new
+    else
+      flash[:success] = ["The recipe was successfully created"]
+      redirect_to @recipe
     end
   end
 
   def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    @recipe.update(recipe_params)
+    flash[:error] = @recipe.errors.full_messages
+
+    if flash[:error].any?
+      render :new
+    else
+      flash[:success] = ["The recipe was successfully updated"]
+      redirect_to @recipe
     end
   end
 
