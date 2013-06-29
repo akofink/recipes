@@ -12,8 +12,10 @@
     </header>
 
     <div class='container'>
-      <%= render 'shared/errors' %>
       <div class='span8'>
+        <%= render 'shared/errors' %>
+        <%= render 'shared/success' %>
+        <%= render 'shared/info' %>
         <%= yield %>
       </div>
     </div>

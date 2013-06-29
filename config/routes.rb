@@ -7,8 +7,8 @@ Recipes::Application.routes.draw do
   match 'signup' => 'users#new', via: :get
 
   resources :sessions
-  match 'login' => 'sessions#new', via: :get
-  match 'logout' => 'sessions#destroy', via: :get
+  match 'login' => 'sessions#new', via: :get, as: :login
+  match 'logout' => 'sessions#destroy', via: :get, as: :logout
 
 
   resource :pages

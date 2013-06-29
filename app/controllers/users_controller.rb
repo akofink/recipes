@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
-  def initialize
-    super
-    @errors = []
-  end
+  load_and_authorize_resource
 
   def create
     @user = User.create(user_params)
-    @errors = @user.errors
+    flash[:error] = @user.errors.full_messages
 
-    if @errors.any?
+    if flash[:error].any?
       render :new
     else
-      render :show
+      flash[:success] = ["The user was successfully created"]
+      redirect_to :login
     end
   end
 
@@ -22,9 +20,9 @@ class UsersController < ApplicationController
   def update
     set_user
     @user.update(user_params)
-    @errors = @user.errors
+    flash[:error] = @user.errors.full_messages
 
-    if @errors.any?
+    if flash[:error].any?
       render :edit
     else
       render :show
@@ -59,6 +57,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit!
   end
 end

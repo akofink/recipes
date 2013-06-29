@@ -16,6 +16,8 @@
 
 <br>
 
-<%= link_to new_recipe_path do %>
-  <i class='icon-plus-sign'></i> New Recipe
+<% if current_user %>
+  <%= link_to new_recipe_path do %>
+    <i class='icon-plus-sign'></i> New Recipe
+  <% end %>
 <% end %>

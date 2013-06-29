@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  validates_presence_of :password_confirmation, unless: 'password.blank?'
   validates :email,
     presence: true,
     uniqueness: true,
@@ -9,7 +8,7 @@ class User < ActiveRecord::Base
       with: /.+@.+\..+/,
       message: 'must be the correct format'
     }
-  validates :password,
+  validates :password, unless: 'password.blank?',
     format: {
       with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*(_|[^\w]|\d)).+\z/,
       message: 'must meet the security requirements'

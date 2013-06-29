@@ -1,14 +1,4 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div class="alert alert-error">
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for @user do |f| %>
   <fieldset>
     <div class="field controls-row span5">
       <span class='input-prepend'>
