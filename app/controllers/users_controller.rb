@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :delete]
 
   def create
     @user = User.create(user_params)
@@ -14,11 +14,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    set_user
   end
 
   def update
-    set_user
     @user.update(user_params)
     flash[:error] = @user.errors.full_messages
 
@@ -30,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    set_user.destroy
+    @user.destroy
     redirect_to User
   end
 
@@ -43,11 +41,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    set_user
   end
 
   def delete
-    set_user
   end
 
   private

@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-  load_and_authorize_resource
-
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -57,12 +55,10 @@ class RecipesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def recipe_params
     params.require(:recipe).permit(:title, :body)
   end
