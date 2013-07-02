@@ -5,7 +5,9 @@
       <%= link_to 'akRecipes', :root, class: 'brand', id: 'logo' %>
       <ul class="nav">
         <li><%= link_to 'About', :about %></li>
+      </ul>
 
+      <ul class="nav right">
         <% if current_user %>
           <li><%= link_to 'Logout', :logout %></li>
           <li><%= link_to 'Account', :account %></li>
