@@ -72,4 +72,15 @@ describe User do
       @user.save.should_not be_true
     end
   end
+
+  it 'logs in a user' do
+    @user = User.new(
+      email: 'a@b.c',
+      password: 'Pass123'
+    )
+
+    User.stub(:find_by).and_return(@user)
+    @user.should_receive(:authenticate)
+    User.login('a@b.c', 'Pass123')
+  end
 end
