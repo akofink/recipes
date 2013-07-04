@@ -31,4 +31,15 @@ describe 'user' do
     click_link 'Logout'
     expect(page).to have_content 'Logged out'
   end
+
+  it 'is shown an error on unsuccessful login' do
+    visit '/'
+    click_link 'Login'
+    within('form') do
+      fill_in 'email', with: 'a@b.c'
+      fill_in 'password', with: 'Pass12'
+      click_button 'Login'
+    end
+    expect(page).to have_content 'Login failed'
+  end
 end
