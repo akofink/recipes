@@ -18,18 +18,20 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    flash[:error] = @user.errors.full_messages
 
-    if flash[:error].any?
+    if @user.errors.any?
+      flash[:error] = @user.errors.full_messages
       render :edit
     else
+      flash[:success] = ['User successfully updated']
       render :show
     end
   end
 
   def destroy
     @user.destroy
-    redirect_to User
+    flash[:info] = ['User deleted']
+    redirect_to :root
   end
 
   def index
