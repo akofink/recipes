@@ -62,7 +62,7 @@ describe 'user' do
     end
 
     it 'is shown an error on unsuccessful login' do
-      login 'a@b.cc'
+      login({ email: 'a@b.cc' })
       expect(page).to have_content 'Login failed'
     end
   end

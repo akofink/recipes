@@ -5,17 +5,27 @@ include LoginSteps
 
 describe 'recipe' do
   it 'can be created' do
+    login
     create_recipe
     expect(page).to have_content 'The recipe was successfully created'
   end
 
-  it 'can be read' do
+  it 'can be read by anyone' do
+    login
     create_recipe
+    logout
+    login({
+      email: 'a@b.com',
+      password: 'Pass123'
+    })
+    go_to_root
+    click_link 'Test Title'
     expect(page).to have_content 'Test Title'
     expect(page).to have_content 'test body'
   end
 
-  it 'can be updated' do
+  it 'can be updated by the creator' do
+    login
     create_recipe
     click_link 'Edit'
     fill_form({
@@ -26,7 +36,23 @@ describe 'recipe' do
     expect(page).to have_content 'The recipe was successfully updated'
   end
 
-  it 'can be deleted' do
+  it 'can only be updated by the creator (and admins)' do
+    login
+    create_recipe
+    logout
+    login({
+      email: 'foo@bar.com',
+      password: 'Pass123',
+      password_confirmation: 'Pass123'
+    })
+    go_to_root
+    click_link 'Test Title'
+    click_link 'Edit'
+    expect(page).to have_content 'Invalid credentials'
+  end
+
+  it 'can be deleted by the creator' do
+    login
     create_recipe
     click_link 'Edit'
     click_link 'Delete'
@@ -36,7 +62,6 @@ describe 'recipe' do
 end
 
 def create_recipe
-    login
     go_to_root
     click_link 'New Recipe'
     fill_form({
