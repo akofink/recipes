@@ -19,6 +19,7 @@ describe User do
         'A!$S@baR.)#$f.asro'
       ],
       invalid: [
+        '',
         'a',
         'a@',
         'a@a',
