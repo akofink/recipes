@@ -1,0 +1,4 @@
+## akRecipes
+
+![Build Status](https://travis-ci.org/akofink/akrecipes.png?branch=master)
+![Code Climate](https://codeclimate.com/github/akofink/akrecipes.png)
