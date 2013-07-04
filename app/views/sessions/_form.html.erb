@@ -1,14 +1,20 @@
 <%= form_tag sessions_path do %>
   <fieldset>
     <div class="field controls-row span5">
-      <%= text_field_tag :email, '', placeholder: "email" %>
+      <span class='input-prepend'>
+        <i class="add-on icon-envelope-alt"></i>
+        <%= text_field_tag :email, '', placeholder: "email" %>
+      </span>
     </div>
 
     <div class="field controls-row span5">
-      <%= password_field_tag :password, 
-        '',
-        placeholder: "password"
-      %>
+      <span class='input-prepend'>
+        <i class="add-on icon-key"></i>
+        <%= password_field_tag :password, 
+          '',
+          placeholder: "password"
+        %>
+      </span>
     </div>
   </div>
   <div class="actions span5">
