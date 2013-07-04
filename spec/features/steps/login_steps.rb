@@ -1,5 +1,6 @@
 module LoginSteps
   def login(email = 'a@b.c', password = 'Pass123')
+    valid_user
     go_to_root
     click_link 'Login'
     fill_form({

@@ -15,7 +15,11 @@ Recipes::Application.routes.draw do
   resource :pages
   match 'about' => 'pages#about', via: :get
 
-  resources :recipes
+  resources :recipes do
+    member do
+      get 'delete'
+    end
+  end
   match 'most_recent' => 'recipes#most_recent', via: :get
 
   root to: 'recipes#index'
