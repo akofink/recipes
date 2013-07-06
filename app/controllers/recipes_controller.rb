@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :delete]
+  before_action :set_recipe, only: [ :show, :edit, :update, :destroy, :delete ]
+  before_action :authorize, only: [ :edit ]
 
   def index
     @recipes = Recipe.all
@@ -55,10 +56,14 @@ class RecipesController < ApplicationController
 
   private
   def set_recipe
-    @recipe = Recipe.find(params[:id])
+    @recipe ||= Recipe.find(params[:id])
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :body)
+    params.require(:recipe).permit(:title, :body, :user_id)
+  end
+
+  def current_permission
+    @current_permission ||= Permission.new(current_user, { recipe: @recipe })
   end
 end

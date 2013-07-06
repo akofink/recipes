@@ -11,7 +11,7 @@ require 'capybara/rspec'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Require shared test steps
-Dir[Rails.root.join("spec/features/steps/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join("spec/steps/**/*.rb")].each {|f| require f}
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
