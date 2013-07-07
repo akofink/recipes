@@ -12,6 +12,7 @@ group :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'capybara'
+  gem 'simplecov', require: false
 end
 
 group :production do
