@@ -25,6 +25,7 @@ end
 
 gem "twitter-bootstrap-rails"
 gem "less-rails"
+gem 'font-awesome-rails'
 gem "therubyracer"
 gem 'bootstrap-sass-rails'
 gem 'font-awesome-sass-rails'
