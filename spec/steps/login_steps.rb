@@ -9,6 +9,7 @@ module LoginSteps
       password: args[:password]
     })
     click_button 'Login'
+  rescue
   end
 
   def logout
@@ -17,8 +18,12 @@ module LoginSteps
   end
 
   def valid_user(args = {})
+    @user ||= create_user args
+  end
+
+  def create_user(args = {})
     args = valid_user_args.merge args
-    @user ||= User.create!(args)
+    User.create!(args)
   end
 
   def valid_user_args(args = {})

@@ -6,11 +6,6 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def most_recent
-    @recipes = Recipe.order(:created_at).limit(5)
-    render 'index'
-  end
-
   def show
   end
 

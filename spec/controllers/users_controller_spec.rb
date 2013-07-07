@@ -8,12 +8,31 @@ describe 'user' do
     valid_user
   end
 
+  describe 'accounts' do
+    before(:each) do
+      create_user({
+        email: 'bob@dole.com'
+      })
+    end
+
+    it 'can be viewed' do
+      visit '/users'
+      expect(page).to have_content 'bob@dole.com'
+      expect(page).to have_content 'a@b.c'
+    end
+  end
+
   describe 'account' do
     it 'can be created' do
       go_to_root
       click_link 'Sign Up'
       fill_form({
         email: 'a@b.com',
+        password: 'Pass123',
+      })
+      click_button 'Create User'
+      expect(page).to have_content "Password confirmation can't be blank"
+      fill_form({
         password: 'Pass123',
         password_confirmation: 'Pass123'
       })
@@ -30,6 +49,12 @@ describe 'user' do
       login
       click_link 'Account'
       click_link 'Edit'
+      fill_form({
+        email: 'a@b.com',
+        password: 'Pass123',
+      })
+      click_button 'Update User'
+      expect(page).to have_content "Password confirmation can't be blank"
       fill_form({
         email: 'foo@bar.com',
         password: 'PassWord123',
