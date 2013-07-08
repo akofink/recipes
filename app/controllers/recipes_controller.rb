@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [ :show, :edit, :update, :destroy, :delete ]
-  before_action(only: [ :edit ]) { authorize({ recipe: @recipe }) }
+  before_action { authorize({ recipe: @recipe }) }
 
   def index
     @recipes = Recipe.all

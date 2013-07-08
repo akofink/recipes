@@ -1,6 +1,36 @@
-class Permission < Struct.new(:user, :args)
+class Permission
+  attr_reader :user, :recipe
+
+  def initialize(user, args = {})
+    @user = user || User.new
+    @recipe = Recipe.find(args[:recipe]) if args[:recipe]
+  end
+
   def allow?(controller, action)
-    user && recipe == user.id
+    case controller
+    when 'recipes'
+      case action
+      when 'index', 'show', 'create'
+        true
+      when 'edit', 'destroy', 'delete'
+        user && recipe == user.id
+      else
+        false
+      end
+    when 'users'
+      case action
+      when 'index'
+        @user.admin?
+      when 'new', 'create'
+        true
+      else
+        false
+      end
+    when 'sessions'
+      true
+    else
+      false
+    end
   end
 
   def recipe

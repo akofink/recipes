@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def self.login(email, password)
     User.find_by(email: email).try(:authenticate, password)
   end
+
+  def admin?
+    admin == 1
+  end
 end
