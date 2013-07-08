@@ -1,5 +1,5 @@
 class Permission < Struct.new(:user, :args)
-  def allow?
+  def allow?(controller, action)
     user && recipe == user.id
   end
 

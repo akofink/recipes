@@ -22,10 +22,16 @@ private
     redirect_to request.env['HTTP_REFERER'] ? :back : default
   end
 
-  def authorize
-    unless current_permission.allow?
+  def authorize(args = {})
+    unless current_permission(args).allow?(params[:controller], params[:action])
       flash[:error] = ['Invalid credentials']
       redirect_back
     end
   end
+
+  def current_permission(args = {})
+    @current_permission ||= Permission.new(current_user, args)
+  end
+  delegate :allow?, to: :current_permission
+  helper_method :allow?
 end
