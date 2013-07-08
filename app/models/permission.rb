@@ -17,24 +17,16 @@ class Permission
         true
       when 'edit', 'update', 'destroy', 'delete'
         current_user && recipe.user_id == current_user.id
-      else
-        false
       end
     when 'users'
       case action
-        when 'index'
-          current_user.admin?
-        when 'show', 'edit', 'update', 'delete', 'destroy'
-          current_user.admin? || current_user.id == user.id
-        when 'new', 'create'
-          true
-        else
-          false
+      when 'index'
+        current_user.admin?
+      when 'show', 'edit', 'update', 'delete', 'destroy'
+        current_user.admin? || current_user.id == user.id
+      when 'new', 'create'
+        true
       end
-    when 'sessions'
-      true
-    else
-      false
     end
   end
 
