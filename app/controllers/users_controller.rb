@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :delete]
+  before_action { authorize({ user: @user }) }
 
   def create
     @user = User.create(user_params)
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by id: params[:id] || current_user
+    @user ||= User.find_by(id: params[:id]) || current_user
   end
 
   def user_params

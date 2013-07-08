@@ -16,6 +16,11 @@ describe 'user' do
     end
 
     it 'can be viewed' do
+      create_user({
+        email: 'ad@min.com',
+        admin: true
+      })
+      login({ email: 'ad@min.com' })
       visit '/users'
       expect(page).to have_content 'bob@dole.com'
       expect(page).to have_content 'a@b.c'
