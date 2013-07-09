@@ -32,6 +32,6 @@ private
   def current_permission(args = {})
     @current_permission ||= Permission.new(current_user, args)
   end
-  delegate :allow?, to: :current_permission
-  helper_method :allow?
+  delegate :allowed?, to: :current_permission
+  helper_method :allowed?
 end
