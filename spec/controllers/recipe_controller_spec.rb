@@ -58,9 +58,7 @@ describe 'recipe' do
       password: 'Pass123',
       password_confirmation: 'Pass123'
     })
-    go_to_root
-    click_link 'Test Title'
-    click_link 'Edit'
+    visit 'recipes/1/edit'
     expect(page).to have_content 'Invalid credentials'
   end
 

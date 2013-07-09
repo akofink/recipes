@@ -10,6 +10,8 @@
   <i class='icon-arrow-left'></i> Back
 <% end %>
 
-<%= link_to edit_recipe_path(@recipe) do %>
-  <i class='icon-pencil'></i> Edit
+<% if allow? 'recipes', 'edit' %>
+  <%= link_to edit_recipe_path(@recipe) do %>
+    <i class='icon-pencil'></i> Edit
+  <% end %>
 <% end %>

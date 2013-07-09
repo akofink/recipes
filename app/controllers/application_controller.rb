@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def current_permission(args = {})
+    @current_permission ||= Permission.new(current_user, args)
+  end
+  delegate :allow?, to: :current_permission
+  helper_method :allow?
+
 private
 
   def login_with_session(user)
@@ -29,9 +35,4 @@ private
     end
   end
 
-  def current_permission(args = {})
-    @current_permission ||= Permission.new(current_user, args)
-  end
-  delegate :allowed?, to: :current_permission
-  helper_method :allowed?
 end
