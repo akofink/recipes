@@ -49,6 +49,9 @@ class RecipesController < ApplicationController
   def delete
   end
 
+  def add_image
+  end
+
   private
   def set_recipe
     @recipe ||= Recipe.find(params[:id])

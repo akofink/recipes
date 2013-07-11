@@ -14,6 +14,11 @@
         class: "span6 instant-tooltip"
       %>
     </div>
+
+    <div id='image-uploads' class='field controls-row'>
+      <%= link_to 'Add Image', action: :add_image, remote: true %>
+    </div>
+
     <div class="actions">
       <%= f.submit class: 'btn' %>
     </div>

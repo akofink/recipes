@@ -19,6 +19,10 @@ Recipes::Application.routes.draw do
     member do
       get 'delete'
     end
+
+    collection do
+      get 'add_image'
+    end
   end
   match 'most_recent' => 'recipes#most_recent', via: :get
 
