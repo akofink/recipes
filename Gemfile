@@ -34,6 +34,9 @@ gem 'sass-rails'
 gem 'sass'
 gem 'redcarpet'
 
+# Use CarrierWave for uploads
+gem 'carrierwave'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
