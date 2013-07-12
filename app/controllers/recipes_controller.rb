@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.images.build
   end
 
   def edit
@@ -29,7 +30,9 @@ class RecipesController < ApplicationController
   end
 
   def update
+    @recipe.images = @images
     @recipe.update(recipe_params)
+
     flash[:error] = @recipe.errors.full_messages
 
     if flash[:error].any?
@@ -49,16 +52,21 @@ class RecipesController < ApplicationController
   def delete
   end
 
-  def add_image
-  end
-
   private
+
   def set_recipe
     @recipe ||= Recipe.find(params[:id])
+    @images ||= @recipe.images + [ Image.new ]
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :body, :user_id)
+    params
+      .require(:recipe)
+      .permit(
+        :title,
+        :body,
+        :user_id,
+        images_attributes: [ :data ]
+      )
   end
-
 end

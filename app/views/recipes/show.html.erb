@@ -6,6 +6,10 @@
   <%= md @recipe.body %>
 </div>
 
+<% @recipe.images.each do |image| %>
+  <%= image_tag image.data %>
+<% end %>
+
 <%= link_to :root do %>
   <i class='icon-arrow-left'></i> Back
 <% end %>

@@ -13,7 +13,7 @@ class Permission
       case action
       when 'create', 'new'
         current_user.id
-      when 'index', 'show'
+      when 'index', 'show', 'add_image'
         true
       when 'edit', 'update', 'destroy', 'delete'
         current_user && recipe.user_id == current_user.id
