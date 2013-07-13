@@ -20,6 +20,7 @@
       <%= form.fields_for :images do |image_fields| %>
           <div class="field controls-row">
             <%= image_fields.file_field :data %>
+            <%= image_fields.hidden_field :data_cache %>
           </div>
       <% end %>
     </div>

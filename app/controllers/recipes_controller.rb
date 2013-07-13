@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe.images.build
   end
 
   def create
@@ -30,7 +31,6 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe.images = @images
     @recipe.update(recipe_params)
 
     flash[:error] = @recipe.errors.full_messages
@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
         :title,
         :body,
         :user_id,
-        images_attributes: [ :data ]
+        images_attributes: [ :data, :data_cache ]
       )
   end
 end

@@ -6,8 +6,8 @@
   <%= md @recipe.body %>
 </div>
 
-<% @recipe.images.each do |image| %>
-  <%= image_tag image.data %>
+<% if @recipe.images.present? %>
+  <%= render 'image_carousel' %>
 <% end %>
 
 <%= link_to :root do %>
