@@ -4,7 +4,13 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
   storage :file
-  process resize_to_fit: [647, 400]
+  process :crop
+
+  def crop width = 500, height = 500
+    manipulate! do |image|
+      image.resize_to_fill width, height
+    end
+  end
 
   def store_dir
     if model.recipe_id

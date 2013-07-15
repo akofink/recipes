@@ -3,12 +3,14 @@
 </legend>
 
 <div class='body-text'>
+  <div>
+    <% if @recipe.images.present? %>
+      <%= render 'image_carousel' %>
+    <% end %>
+  </div>
   <%= md @recipe.body %>
 </div>
 
-<% if @recipe.images.present? %>
-  <%= render 'image_carousel' %>
-<% end %>
 
 <%= link_to :root do %>
   <i class='icon-arrow-left'></i> Back
