@@ -64,7 +64,10 @@ class RecipesController < ApplicationController
         :title,
         :body,
         :user_id,
-        images_attributes: [ :data, :data_cache ]
+        images_attributes: [
+          :id,
+          :data
+        ]
       )
   end
 end

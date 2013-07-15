@@ -23,8 +23,7 @@
           <hr>
           <%= image_tag images_fields.object.data %>
           <br>
-          <%= images_fields.file_field :data %>
-          <%= images_fields.hidden_field :data_cache %>
+          <%= images_fields.file_field :data, value: images_fields.object.data %>
         </div>
       <% end %>
     </div>
