@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action { authorize({ recipe: @recipe }) }
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.order :title
   end
 
   def show
