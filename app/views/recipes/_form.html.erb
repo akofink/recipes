@@ -15,13 +15,17 @@
       %>
     </div>
 
+    <%= link_to 'Add Image', controller: :images, action: :new, remote: true %>
     <div id='image-uploads' class='field controls-row'>
-      <%#= link_to 'Add Image', action: :add_image, remote: true %>
-      <%= form.fields_for :images do |image_fields| %>
-          <div class="field controls-row">
-            <%= image_fields.file_field :data %>
-            <%= image_fields.hidden_field :data_cache %>
-          </div>
+
+      <%= form.fields_for :images, @recipe.images do |images_fields| %>
+        <div>
+          <hr>
+          <%= image_tag images_fields.object.data %>
+          <br>
+          <%= images_fields.file_field :data %>
+          <%= images_fields.hidden_field :data_cache %>
+        </div>
       <% end %>
     </div>
 

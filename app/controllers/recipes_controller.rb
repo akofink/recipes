@@ -11,11 +11,9 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.images.build
   end
 
   def edit
-    @recipe.images.build
   end
 
   def create

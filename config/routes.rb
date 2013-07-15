@@ -15,13 +15,11 @@ Recipes::Application.routes.draw do
   resource :pages
   match 'about' => 'pages#about', via: :get
 
+  resources :images
+
   resources :recipes do
     member do
       get 'delete'
-    end
-
-    collection do
-      get 'add_image'
     end
   end
   match 'most_recent' => 'recipes#most_recent', via: :get

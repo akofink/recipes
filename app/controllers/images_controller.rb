@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
   def new
+    @image = Image.new
+    render partial: 'form'
   end
 
   def create
