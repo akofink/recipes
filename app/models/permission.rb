@@ -8,6 +8,7 @@ class Permission
   end
 
   def allow?(controller, action)
+    return true if current_user.admin?
     case controller
     when 'recipes'
       case action

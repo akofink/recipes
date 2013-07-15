@@ -1,12 +1,12 @@
 <%= form_for @user do |f| %>
-  <fieldset>
-    <div class="field controls-row span5">
+  <fieldset class='span11'>
+    <div class="field controls-row">
       <span class='input-prepend'>
         <i class="add-on icon-envelope-alt"></i>
         <%= f.text_field :email, placeholder: "email" %>
       </span>
     </div>
-    <div class="field span5">
+    <div class="field">
       <span class='input-prepend'>
         <i class="add-on icon-key"></i>
         <%= f.password_field :password, 
@@ -17,7 +17,7 @@
         %>
       </span>
     </div>
-    <div class="field controls-row span5">
+    <div class="field controls-row">
       <span class='input-prepend'>
         <i class="add-on icon-key"></i>
         <%= f.password_field :password_confirmation, 
@@ -28,7 +28,7 @@
         %>
       </span>
     </div>
-    <div class="actions span5">
+    <div class="actions">
       <%= f.submit class: 'btn' %>
     </div>
   </fieldset>
