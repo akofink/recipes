@@ -1,13 +1,13 @@
 <%= form_tag sessions_path do %>
-  <fieldset>
-    <div class="field controls-row span5">
+  <fieldset class='span11'>
+    <div class="field controls-row">
       <span class='input-prepend'>
         <i class="add-on icon-envelope-alt"></i>
         <%= text_field_tag :email, '', placeholder: "email" %>
       </span>
     </div>
 
-    <div class="field controls-row span5">
+    <div class="field controls-row">
       <span class='input-prepend'>
         <i class="add-on icon-key"></i>
         <%= password_field_tag :password, 
@@ -16,7 +16,7 @@
         %>
       </span>
     </div>
-    <div class="actions span5">
+    <div class="actions">
       <%= submit_tag :Login, class: 'btn' %>
     </div>
   </fieldset>
