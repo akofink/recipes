@@ -146,6 +146,7 @@ GEM
       json (~> 1.4)
     redcarpet (2.3.0)
     ref (1.0.5)
+    rmagick (2.13.2)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -236,6 +237,7 @@ DEPENDENCIES
   rails (>= 4.0)
   rails_12factor
   redcarpet
+  rmagick
   rspec-rails
   sass
   sass-rails
