@@ -66,7 +66,9 @@ class RecipesController < ApplicationController
         :user_id,
         images_attributes: [
           :id,
-          :data
+          :data,
+          :user_id,
+          :recipe_id
         ]
       )
   end

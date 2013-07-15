@@ -1,4 +1,4 @@
-<%= form_for(@recipe) do |form| %>
+<%= form_for @recipe, html: { multipart: true } do |form| %>
   <fieldset>
     <div class="field controls-row">
       <%= form.hidden_field :user_id, value: current_user.id %>
@@ -15,7 +15,13 @@
       %>
     </div>
 
-    <%= link_to 'Add Image', controller: :images, action: :new, remote: true %>
+    <%= link_to 'Add Image', 
+      controller: :images,
+      action: :new,
+      remote: true,
+      recipe: @recipe.id
+    %>
+
     <div id='image-uploads' class='field controls-row'>
 
       <%= form.fields_for :images, @recipe.images do |images_fields| %>
@@ -24,6 +30,7 @@
           <%= image_tag images_fields.object.data %>
           <br>
           <%= images_fields.file_field :data, value: images_fields.object.data %>
+          <%= images_fields.hidden_field :user_id, value: current_user.id %>
         </div>
       <% end %>
     </div>

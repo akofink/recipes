@@ -4,4 +4,5 @@ class Image < ActiveRecord::Base
   validates_presence_of :data
 
   belongs_to :recipe
+  belongs_to :user
 end

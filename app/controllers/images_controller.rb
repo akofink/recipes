@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
   def new
-    @image = Image.new
+    @recipe ||= Recipe.find_by_id(params[:id]) || Recipe.new
+    @image ||= Image.new
     render partial: 'form'
   end
 
