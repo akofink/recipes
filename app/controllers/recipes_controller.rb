@@ -30,6 +30,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe.update(recipe_params)
+
     flash[:error] = @recipe.errors.full_messages
 
     if flash[:error].any?
@@ -50,12 +51,25 @@ class RecipesController < ApplicationController
   end
 
   private
+
   def set_recipe
     @recipe ||= Recipe.find(params[:id])
+    @images ||= @recipe.images + [ Image.new ]
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :body, :user_id)
+    params
+      .require(:recipe)
+      .permit(
+        :title,
+        :body,
+        :user_id,
+        images_attributes: [
+          :id,
+          :data,
+          :user_id,
+          :recipe_id
+        ]
+      )
   end
-
 end

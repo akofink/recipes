@@ -1,0 +1,6 @@
+<%= fields_for "recipe[images_attributes][#{srand}]", @image do |images_fields| %>
+  <div>
+    <%= images_fields.file_field :data %>
+    <%= images_fields.hidden_field :user_id, value: current_user.id %>
+  </div>
+<% end %>

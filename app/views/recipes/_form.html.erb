@@ -1,21 +1,42 @@
-<%= form_for(@recipe) do |f| %>
+<%= form_for @recipe, html: { multipart: true } do |form| %>
   <fieldset>
     <div class="field controls-row">
-      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
     </div>
     <div class="field controls-row">
-      <%= f.text_field :title, placeholder: "Title", class: "span5" %>
+      <%= form.text_field :title, placeholder: "Title", class: "span5" %>
     </div>
     <div class="field controls-row">
-      <%= f.text_area :body, 
+      <%= form.text_area :body, 
         placeholder: "Ingredients and Directions", 
         rows: "15", 
         title: 'You can use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" class="tooltip-link">markdown</a> here.',
         class: "span6 instant-tooltip"
       %>
     </div>
+
+    <%= link_to 'Add Image', 
+      controller: :images,
+      action: :new,
+      remote: true,
+      recipe: @recipe.id
+    %>
+
+    <div id='image-uploads' class='field controls-row'>
+
+      <%= form.fields_for :images, @recipe.images do |images_fields| %>
+        <div>
+          <hr>
+          <%= image_tag images_fields.object.data %>
+          <br>
+          <%= images_fields.file_field :data, value: images_fields.object.data %>
+          <%= images_fields.hidden_field :user_id, value: current_user.id %>
+        </div>
+      <% end %>
+    </div>
+
     <div class="actions">
-      <%= f.submit class: 'btn' %>
+      <%= form.submit class: 'btn' %>
     </div>
   </fieldset>
 <% end %>

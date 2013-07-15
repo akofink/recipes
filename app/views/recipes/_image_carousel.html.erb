@@ -1,0 +1,22 @@
+<div id="recipe-carousel" class="carousel slide">
+  <% if @recipe.images.count > 1 %>
+    <ol class="carousel-indicators">
+      <% @recipe.images.each_with_index do |image, i| %>
+        <li data-target="#recipe-carousel" data-slide-to="<%= i %>" class="<%= 'active' if image == @recipe.images.first %>"></li>
+      <% end %>
+    </ol>
+  <% end %>
+
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <% @recipe.images.each do |image| %>
+      <div class="item <%= 'active' if image == @recipe.images.first %>"><%= image_tag image.data %></div>
+    <% end %>
+  </div>
+
+  <!-- Carousel nav -->
+  <% if @recipe.images.count > 1 %>
+    <a class="carousel-control left" href="#recipe-carousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#recipe-carousel" data-slide="next">&rsaquo;</a>
+  <% end %>
+</div>

@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709120952) do
+ActiveRecord::Schema.define(version: 20130711024234) do
 
   create_table "images", force: true do |t|
-    t.string   "name"
-    t.string   "path"
+    t.string   "data"
     t.integer  "recipe_id"
     t.integer  "user_id"
     t.datetime "created_at"
