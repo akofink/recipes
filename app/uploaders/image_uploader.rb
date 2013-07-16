@@ -3,7 +3,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
-  storage :file
+  storage :fog
   process :crop
 
   def crop width = 500, height = 500
