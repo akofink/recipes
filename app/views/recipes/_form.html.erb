@@ -1,8 +1,14 @@
 <%= form_for @recipe, html: { multipart: true } do |form| %>
   <fieldset>
-    <div class="field controls-row">
-      <%= form.hidden_field :user_id, value: current_user.id %>
-    </div>
+    <% if current_user.admin? %>
+      <div class="field controls-row">
+        <%= form.text_field :user_id, value: @recipe.user_id || current_user.id %>
+      </div>
+    <% else %>
+      <div class="field controls-row">
+        <%= form.hidden_field :user_id, value: @recipe.user_id || current_user.id %>
+      </div>
+    <% end %>
     <div class="field controls-row">
       <%= form.text_field :title, placeholder: "Title", class: "span5" %>
     </div>
