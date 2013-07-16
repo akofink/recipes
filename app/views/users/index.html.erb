@@ -1,13 +1,16 @@
+<legend>All Users</legend>
 <table class='table table-hover'>
   <thead>
     <tr>
-      <th>All Users</th>
+      <th>Id</th>
+      <th>Email</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr class='table-link'>
+        <td><%= user.id %></td>
         <td><%= link_to user.email, user, class: 'no-style button-link' %></td>
       </tr>
     <% end %>
