@@ -1,9 +1,11 @@
 class RecipesController < ApplicationController
+  before_action :set_user
   before_action :set_recipe, only: [ :show, :edit, :update, :destroy, :delete ]
   before_action { authorize({ recipe: @recipe }) }
 
   def index
-    @recipes = Recipe.order :title
+    @recipes ||= @user.recipes if @user
+    @recipes ||= Recipe.order(:title)
   end
 
   def show
@@ -53,8 +55,12 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-    @recipe ||= Recipe.find(params[:id])
+    @recipe ||= Recipe.find_by id: params[:id]
     @images ||= @recipe.images + [ Image.new ]
+  end
+
+  def set_user
+    @user ||= User.find_by id: params[:user_id]
   end
 
   def recipe_params

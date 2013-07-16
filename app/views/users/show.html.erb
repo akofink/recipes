@@ -4,6 +4,13 @@
   <%= @user.email %>
 </legend>
 
+<div class='span11'>
+  <%= link_to 'Your Recipes', user_recipes_path(@user) %>
+</div>
+
+<br>
+<br>
+
 <%= link_to :root do %>
 <i class='icon-arrow-left'></i> Back
 <% end %>

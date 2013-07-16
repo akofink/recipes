@@ -1,5 +1,6 @@
 Recipes::Application.routes.draw do
   resources :users do
+    resources :recipes
     member do
       get 'delete'
     end

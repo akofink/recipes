@@ -47,6 +47,7 @@ describe 'user' do
 
     it 'can be read' do
       login
+      click_link 'Account'
       expect(page).to have_content @user.email
     end
 
