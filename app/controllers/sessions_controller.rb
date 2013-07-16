@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if u = User.login(params[:email], params[:password])
       login_with_session(u)
       flash[:success] = ['Login successful']
-      redirect_to u
+      redirect_to :root
     else
       flash[:error] = ['Login failed!']
       redirect_to :login
