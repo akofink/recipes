@@ -7,7 +7,6 @@ gem 'rails', '>= 4.0'
 
 # Use sqlite3 as the database for Active Record
 group :test do
-  gem 'sqlite3'
   gem 'guard-rails'
   gem 'rspec-rails'
   gem 'guard-rspec'
@@ -20,10 +19,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :production, :development do
-  gem 'pg'
-end
-
+gem 'pg'
 gem "twitter-bootstrap-rails"
 gem "less-rails"
 gem 'font-awesome-rails'

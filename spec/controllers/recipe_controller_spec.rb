@@ -28,8 +28,8 @@ describe 'recipe' do
   end
 
   it 'can be updated by the creator' do
-    create_recipe
     login
+    create_recipe_through_ui
     go_to_root
     click_link 'Test Title'
     click_link 'Edit'
@@ -48,17 +48,14 @@ describe 'recipe' do
 
   it 'can only be updated by the creator (and admins)' do
     login
-    go_to_root
-    click_link 'New Recipe'
-    fill_form valid_ui_recipe_args
-    click_button 'Create Recipe'
+    create_recipe_through_ui
     logout
     login({
       email: 'foo@bar.com',
       password: 'Pass123',
       password_confirmation: 'Pass123'
     })
-    visit 'recipes/1/edit'
+    visit "recipes/#{Recipe.where(title: 'Test Title').last.id}/edit"
     expect(page).to have_content 'Invalid credentials'
   end
 
@@ -71,8 +68,8 @@ describe 'recipe' do
   end
 
   it 'can be deleted by the creator' do
-    create_recipe
     login
+    create_recipe_through_ui
     go_to_root
     click_link 'Test Title'
     click_link 'Edit'
@@ -80,6 +77,13 @@ describe 'recipe' do
     click_button 'Delete'
     expect(page).to have_content 'The recipe was successfully deleted'
   end
+end
+
+def create_recipe_through_ui(args = {})
+    go_to_root
+    click_link 'New Recipe'
+    fill_form args.merge(valid_ui_recipe_args)
+    click_button 'Create Recipe'
 end
 
 def create_recipe(args = {})
