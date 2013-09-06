@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130711024234) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "images", force: true do |t|
     t.string   "data"
     t.integer  "recipe_id"
@@ -37,6 +40,6 @@ ActiveRecord::Schema.define(version: 20130711024234) do
     t.integer  "admin",           default: 0
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
