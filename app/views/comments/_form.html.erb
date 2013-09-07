@@ -1,0 +1,5 @@
+<%= form_for comment do |f| %>
+  <%= f.hidden_field :recipe, recipe %>
+  <%= f.hidden_field :user, current_user %>
+  <%= f.text_field :body %>
+<% end %>

@@ -7,7 +7,7 @@ describe 'recipe' do
   it 'can be created' do
     login
     go_to_root
-    click_link 'New Recipe'
+    first(:link, 'New Recipe').click
     fill_form valid_ui_recipe_args({
       recipe_title: ''
     })
@@ -22,7 +22,7 @@ describe 'recipe' do
     create_recipe
     login
     go_to_root
-    click_link 'Test Title'
+    first(:link, 'Test Title').click
     expect(page).to have_content 'Test Title'
     expect(page).to have_content 'test body'
   end
@@ -31,8 +31,8 @@ describe 'recipe' do
     login
     create_recipe_through_ui
     go_to_root
-    click_link 'Test Title'
-    click_link 'Edit'
+    first(:link, 'Test Title').click
+    first(:link, 'Edit').click
     fill_form({
       recipe_title: '',
     })
@@ -62,7 +62,7 @@ describe 'recipe' do
   it 'handles erroneous updates' do
     login
     go_to_root
-    click_link 'New Recipe'
+    first(:link, 'New Recipe').click
     fill_form valid_ui_recipe_args
     click_button 'Create Recipe'
   end
@@ -71,9 +71,9 @@ describe 'recipe' do
     login
     create_recipe_through_ui
     go_to_root
-    click_link 'Test Title'
-    click_link 'Edit'
-    click_link 'Delete'
+    first(:link, 'Test Title').click
+    first(:link, 'Edit').click
+    first(:link, 'Delete').click
     click_button 'Delete'
     expect(page).to have_content 'The recipe was successfully deleted'
   end
@@ -81,7 +81,7 @@ end
 
 def create_recipe_through_ui(args = {})
     go_to_root
-    click_link 'New Recipe'
+    first(:link, 'New Recipe').click
     fill_form args.merge(valid_ui_recipe_args)
     click_button 'Create Recipe'
 end
