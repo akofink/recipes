@@ -1,4 +1,7 @@
 Recipes::Application.routes.draw do
+  get "comments/create"
+  get "comments/update"
+  get "comments/destroy"
   resources :users do
     resources :recipes
     member do
