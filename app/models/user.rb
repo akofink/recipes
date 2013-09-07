@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :images
   has_many :recipes
+  has_many :comments, dependent: :destroy
 
   validates :email,
     presence: true,
