@@ -2,11 +2,7 @@
   <%= @recipe.title %>
 </legend>
 
-<div>
-  <% if @recipe.images.present? %>
-    <%= render 'image_carousel' %>
-  <% end %>
-</div>
+<%= render 'image_carousel' %>
 
 <div class='body-text'>
   <%= md @recipe.body %>
