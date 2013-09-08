@@ -18,8 +18,4 @@
   <% end %>
 <% end %>
 
-<div id='comments'>
-  <legend>Comments</legend>
-  <%= render 'comments/form', comment: Comment.new, recipe: @recipe %>
-  <%= render 'comments/all', comments: @recipe.comments %>
-</div>
+<%= render 'comments' %>
