@@ -8,7 +8,6 @@
   <%= md @recipe.body %>
 </div>
 
-
 <%= link_to :root do %>
   <i class='icon-arrow-left'></i> Back
 <% end %>
@@ -18,3 +17,9 @@
     <i class='icon-pencil'></i> Edit
   <% end %>
 <% end %>
+
+<div id='comments'>
+  <legend>Comments</legend>
+  <%= render 'comments/form', comment: Comment.new, recipe: @recipe %>
+  <%= render 'comments/all', comments: @recipe.comments %>
+</div>

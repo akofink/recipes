@@ -1,5 +1,14 @@
-<%= form_for comment do |f| %>
-  <%= f.hidden_field :recipe, recipe %>
-  <%= f.hidden_field :user, current_user %>
-  <%= f.text_field :body %>
+<%= form_for comment, remote: true do |form| %>
+  <fieldset>
+    <%= form.hidden_field :recipe_id, value: comment.recipe_id || recipe.id %>
+    <%= form.hidden_field :user_id %>
+
+    <div class='field controls-row'>
+      <%= form.text_area :body %>
+    </div>
+
+    <div class='actions'>
+      <%= form.submit class: 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

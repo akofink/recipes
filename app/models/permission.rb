@@ -7,7 +7,7 @@ class Permission
     @user = User.find(args[:user]) if args[:user]
   end
 
-  def allow?(controller, action)
+  def allow?(controller, action, args = {})
     return true if current_user.admin?
     case controller
     when 'recipes'
@@ -27,6 +27,11 @@ class Permission
         current_user.admin? || current_user.id == user.id
       when 'new', 'create'
         true
+      end
+    when 'comments'
+      case action
+      when 'edit'
+        current_user == args[:comment].user
       end
     end
   end

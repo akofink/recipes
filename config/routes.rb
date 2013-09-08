@@ -1,32 +1,19 @@
 Recipes::Application.routes.draw do
-  get "comments/create"
-  get "comments/update"
-  get "comments/destroy"
+  resources :comments
+  resources :images
+  resource :pages
+  resources :recipes
+  resources :sessions
   resources :users do
     resources :recipes
-    member do
-      get 'delete'
-    end
   end
-  match 'signup' => 'users#new', via: :get
-  match 'account' => 'users#show', via: :get
 
-  resources :sessions
+  match 'about' => 'pages#about', via: :get
+  match 'account' => 'users#show', via: :get
   match 'login' => 'sessions#new', via: :get, as: :login
   match 'logout' => 'sessions#destroy', via: :get, as: :logout
-
-
-  resource :pages
-  match 'about' => 'pages#about', via: :get
-
-  resources :images
-
-  resources :recipes do
-    member do
-      get 'delete'
-    end
-  end
   match 'most_recent' => 'recipes#most_recent', via: :get
+  match 'signup' => 'users#new', via: :get
 
   root to: 'recipes#index'
 end
