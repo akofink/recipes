@@ -1,7 +1,7 @@
 <%= form_for comment, remote: true do |form| %>
   <fieldset>
     <%= form.hidden_field :recipe_id, value: comment.recipe_id || recipe.id %>
-    <%= form.hidden_field :user_id, value: comment.user_id || current_user.id %>
+    <%= form.hidden_field :user_id, value: comment.user_id || current_user.try(:id) %>
 
     <div class='field controls-row'>
       <%= form.text_area :body %>
