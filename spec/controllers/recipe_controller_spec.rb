@@ -74,7 +74,6 @@ describe 'recipe' do
     first(:link, 'Test Title').click
     first(:link, 'Edit').click
     first(:link, 'Delete').click
-    click_button 'Delete'
     expect(page).to have_content 'The recipe was successfully deleted'
   end
 end

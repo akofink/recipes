@@ -74,8 +74,7 @@ describe 'user' do
       login
       click_link 'Account'
       click_link 'Edit'
-      click_link 'Delete'
-      click_button 'Delete'
+      first(:link, 'Delete').click
       expect(page).to have_content 'User deleted'
     end
   end

@@ -5,6 +5,6 @@
 <%= link_to @recipe do %>
   <i class='icon-ban-circle'></i> Cancel
 <% end %>
-<%= link_to 'delete' do %>
+<%= link_to @recipe, method: :delete do %>
   <i class='icon-remove'></i> Delete
 <% end %>
