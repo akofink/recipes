@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :authorize
+
   def new
   end
 
@@ -6,7 +8,7 @@ class SessionsController < ApplicationController
     if u = User.login(params[:email], params[:password])
       login_with_session(u)
       flash[:success] = ['Login successful']
-      redirect_to :root
+      redirect_to :account
     else
       flash[:error] = ['Login failed!']
       redirect_to :login
@@ -16,6 +18,6 @@ class SessionsController < ApplicationController
   def destroy
     logout
     flash[:info] = ['Logged out']
-    redirect_to :root
+    redirect_to :login
   end
 end

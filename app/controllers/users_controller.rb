@@ -10,7 +10,8 @@ class UsersController < ApplicationController
       render :new
     else
       flash[:success] = ["The user was successfully created"]
-      redirect_to :login
+      login_with_session(@user)
+      redirect_to :account
     end
   end
 
