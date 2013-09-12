@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_permission(args = {})
-    @current_permission ||= Permission.new(current_user, args)
+    @current_permission ||= Permission.new(args.merge current_user: current_user)
   end
   delegate :allow?, to: :current_permission
   helper_method :allow?
@@ -30,7 +30,7 @@ private
 
   def authorize(args = {})
     unless current_permission(args).allow?(params[:controller], params[:action])
-      flash[:error] = ['Invalid credentials']
+      flash[:error] = [current_permission.error_message || 'Invalid credentials']
       redirect_back
     end
   end
