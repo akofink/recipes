@@ -1,24 +1,25 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :delete]
-  before_action { authorize({ user: @user }) }
+  before_action { authorize({ user: set_user }) }
 
   def create
-    @user = User.create(user_params)
-    flash[:error] = @user.errors.full_messages
+    @user = User.new(user_params)
 
-    if flash[:error].any?
-      render :new
-    else
+    if @user.save
       flash[:success] = ["The user was successfully created"]
       login_with_session(@user)
       redirect_to :account
+    else
+      flash[:error] = @user.errors.full_messages
+      render :new
     end
   end
 
   def show
+    set_user
   end
 
   def update
+    set_user
     @user.update(user_params)
 
     if @user.errors.any?
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    set_user
     @user.destroy
     flash[:info] = ['User deleted']
     redirect_to :root
@@ -45,9 +47,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    set_user
   end
 
   def delete
+    set_user
   end
 
   private
