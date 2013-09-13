@@ -82,4 +82,9 @@ describe User do
     user.should_receive(:authenticate)
     User.login('a@b.c', 'Pass123')
   end
+
+  it 'determines admin status' do
+    user.should_receive(:admin).and_return 1
+    user.admin?.should be_true
+  end
 end

@@ -1,14 +1,13 @@
 class RecipesController < ApplicationController
-  before_action :set_user
-  before_action :set_recipe, only: [ :show, :edit, :update, :destroy, :delete ]
   before_action { authorize({ recipe: @recipe }) }
 
   def index
-    @recipes ||= @user.recipes.order(:title) if @user
+    @recipes ||= user.recipes.order(:title) if user
     @recipes ||= Recipe.order(:title)
   end
 
   def show
+    set_recipe
   end
 
   def new
@@ -16,21 +15,23 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    set_recipe
   end
 
   def create
-    @recipe = Recipe.create(recipe_params)
-    flash[:error] = @recipe.errors.full_messages
+    @recipe = Recipe.new(recipe_params)
 
-    if flash[:error].any?
-      render :new
-    else
+    if @recipe.save
       flash[:success] = ["The recipe was successfully created"]
       redirect_to @recipe
+    else
+      flash[:error] = @recipe.errors.full_messages
+      render :new
     end
   end
 
   def update
+    set_recipe
     @recipe.update(recipe_params)
 
     flash[:error] = @recipe.errors.full_messages
@@ -44,12 +45,14 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    set_recipe
     @recipe.destroy
     flash[:info] = ['The recipe was successfully deleted']
     redirect_to :root
   end
 
   def delete
+    set_recipe
   end
 
   private
@@ -59,7 +62,7 @@ class RecipesController < ApplicationController
     @images ||= @recipe.images + [ Image.new ]
   end
 
-  def set_user
+  def user
     @user ||= User.find_by id: params[:user_id]
   end
 
