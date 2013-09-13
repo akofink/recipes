@@ -80,6 +80,7 @@ Tween.init	public/assets/application-9ac2907276a5f8e6ff5391b0a81ed6bb.js	/^	init
 Tween.init	public/assets/application-9ac2907276a5f8e6ff5391b0a81ed6bb.js	/^Tween.prototype.init.prototype = Tween.prototype;$/;"	m
 Tween.propHooks._default	public/assets/application-9ac2907276a5f8e6ff5391b0a81ed6bb.js	/^	_default: {$/;"	p
 Tween.run	public/assets/application-9ac2907276a5f8e6ff5391b0a81ed6bb.js	/^	run: function( percent ) {$/;"	m
+Ungrouped	coverage/index.html	/^  <a name="Ungrouped"><\/a>$/;"	a
 User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
 UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
 UsersHelper	app/helpers/users_helper.rb	/^module UsersHelper$/;"	m

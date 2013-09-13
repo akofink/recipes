@@ -18,8 +18,10 @@ group :production do
   gem 'newrelic_rpm'
 end
 
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+  :github => 'anjlab/bootstrap-rails',
+  :branch => '3.0.0'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'bootstrap-sass-rails'
 gem 'carrierwave'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'debugger', group: [:development, :test]
@@ -36,7 +38,6 @@ gem 'sass-rails'
 gem 'sass'
 gem "therubyracer"
 gem 'turbolinks'
-gem "twitter-bootstrap-rails"
 gem 'uglifier', '>= 1.3.0'
 
 group :doc do
