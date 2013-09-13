@@ -1,14 +1,14 @@
-<%= form_for comment, remote: true do |form| %>
-  <fieldset>
+<div class='row col-md-5'>
+  <%= form_for comment, remote: true do |form| %>
     <%= form.hidden_field :recipe_id, value: comment.recipe_id || recipe.id %>
     <%= form.hidden_field :user_id, value: comment.user_id || current_user.try(:id) %>
 
-    <div class='field controls-row'>
-      <%= form.text_area :body %>
+    <div class='form-group'>
+      <%= form.text_area :body, class: 'form-control', rows: '5' %>
     </div>
 
     <div class='actions'>
-      <%= form.submit class: 'btn' %>
+      <%= form.submit class: 'btn btn-default' %>
     </div>
-  </fieldset>
-<% end %>
+  <% end %>
+</div>
