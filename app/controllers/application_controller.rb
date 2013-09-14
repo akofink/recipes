@@ -34,5 +34,4 @@ private
       redirect_back
     end
   end
-
 end
