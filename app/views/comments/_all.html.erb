@@ -1,3 +1,5 @@
-<% comments.each do |comment| %>
-  <%= render 'comments/show', comment: comment %>
-<% end %>
+<div class='col-md-5' id='comments-list'>
+  <% comments.each do |comment| %>
+    <%= render 'comments/show', comment: comment %><br>
+  <% end %>
+</div>

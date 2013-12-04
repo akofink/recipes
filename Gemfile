@@ -19,18 +19,17 @@ end
 group :production do
   # For Heroku Rails Integration
   gem 'rails_12factor'
-  gem 'newrelic_rpm'
 end
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
   :github => 'anjlab/bootstrap-rails',
   :branch => '3.0.0'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '>= 3.0.0'
 gem 'carrierwave'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '>= 4.0.0'
 gem 'fog'
 gem 'font-awesome-rails'
-gem 'jbuilder', '~> 1.0.1'
+gem 'jbuilder', '>= 1.0.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass-rails'
 gem "less-rails"

@@ -10,7 +10,7 @@ $(document).on 'ready page:load', ->
     $(this).toggleClass 'to-show'
 
   $(document).on 'click', '#new_comment .btn', (event) ->
-    $('#comments').append("<div class='comment'><div class='to-show'></div></div>")
+    $('#comments-list').append("<div class='comment'><div class='to-show'></div></div>")
 
   $(document).ajaxSuccess (event, xhr, options) ->
     $('.to-edit').parents('.comment').html(xhr.responseText)
