@@ -24,7 +24,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'carrierwave'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development]
 gem 'fog'
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 1.0.1'
