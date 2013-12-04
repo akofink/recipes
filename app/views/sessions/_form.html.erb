@@ -1,20 +1,17 @@
-<%= form_tag sessions_path do %>
-  <fieldset class='span11'>
-    <div class="field controls-row">
-      <span class='input-prepend'>
-        <i class="add-on icon-envelope-alt"></i>
-        <%= text_field_tag :email, '', placeholder: "email" %>
-      </span>
+<%= form_tag sessions_path, class: 'form-horizontal' do %>
+  <fieldset class='col-md-5'>
+    <div class="form-group input-group">
+      <span class='input-group-addon'><i class="icon-envelope-alt"></i></span>
+      <%= text_field_tag :email, '', placeholder: "email", class: 'form-control' %>
     </div>
 
-    <div class="field controls-row">
-      <span class='input-prepend'>
-        <i class="add-on icon-key"></i>
-        <%= password_field_tag :password, 
-          '',
-          placeholder: "password"
-        %>
-      </span>
+    <div class="form-group input-group">
+      <span class='input-group-addon'><i class="add-on icon-key"></i></span>
+      <%= password_field_tag :password, 
+        '',
+        placeholder: "password",
+        class: 'form-control'
+      %>
     </div>
     <div class="actions">
       <%= submit_tag :Login, class: 'btn' %>
