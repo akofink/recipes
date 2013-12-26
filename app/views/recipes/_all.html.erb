@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>Recipes</th>
-      <%= hidden_field_tag :user, :id, id: 'user-id', value: @user.id %>
+      <%= hidden_field_tag :user, :id, id: 'user-id', value: @user.try(:id) %>
     </tr>
   </thead>
 
