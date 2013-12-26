@@ -8,14 +8,17 @@
   </head>
   <body>
     <header>
-    <%= render 'shared/header' %>
+      <%= render 'shared/header' %>
     </header>
 
     <div class='container'>
-      <div class='span11'>
-        <%= render 'shared/errors' %>
-        <%= render 'shared/success' %>
-        <%= render 'shared/info' %>
+      <div class='row'>
+        <div class='col-md-8'>
+          <%= render 'shared/errors' %>
+          <%= render 'shared/success' %>
+          <%= render 'shared/info' %>
+        </div>
+
         <%= yield %>
       </div>
     </div>
