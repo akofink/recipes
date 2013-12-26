@@ -4,6 +4,21 @@ class RecipesController < ApplicationController
   def index
     @recipes ||= user.recipes.order(:title) if user
     @recipes ||= Recipe.order(:title)
+
+  end
+
+  def filter
+    term = "%#{params[:term]}%"
+    @recipes = Recipe
+    .where(
+      "title ilike ? OR body ilike ?",
+      term,
+      term
+    ).order(:title)
+    render partial: 'all'
+  end
+
+  def filter_recipes
   end
 
   def show
@@ -68,17 +83,17 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params
-      .require(:recipe)
-      .permit(
-        :title,
-        :body,
+    .require(:recipe)
+    .permit(
+      :title,
+      :body,
+      :user_id,
+      images_attributes: [
+        :id,
+        :data,
         :user_id,
-        images_attributes: [
-          :id,
-          :data,
-          :user_id,
-          :recipe_id
-        ]
-      )
+        :recipe_id
+      ]
+    )
   end
 end

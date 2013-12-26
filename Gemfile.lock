@@ -107,6 +107,13 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.0.3)
+      jquery-rails
+      railties (>= 3.1.0)
+    jquery-ui-sass-rails (4.0.3.0)
+      jquery-rails
+      jquery-ui-rails (= 4.0.3)
+      railties (>= 3.1.0)
     json (1.8.1)
     less (2.4.0)
       commonjs (~> 0.2.7)
@@ -244,6 +251,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (>= 1.0.1)
   jquery-rails
+  jquery-ui-sass-rails
   less-rails
   pg
   rails (>= 4.0)

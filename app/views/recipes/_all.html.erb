@@ -1,0 +1,15 @@
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th>Recipes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr class='table-link'>
+        <td><%= link_to recipe.title, recipe, class: 'no-style button-link' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

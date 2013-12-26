@@ -2,7 +2,13 @@ Recipes::Application.routes.draw do
   resources :comments
   resources :images
   resource :pages
-  resources :recipes
+
+  resources :recipes do
+    collection do
+      get :filter
+    end
+  end
+
   resources :sessions
   resources :users do
     resources :recipes

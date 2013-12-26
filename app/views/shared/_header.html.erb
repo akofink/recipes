@@ -16,6 +16,16 @@
       </ul>
 
       <ul class='nav navbar-nav navbar-right'>
+        <% if @recipes %>
+          <li>
+            <%= form_tag({ controller: :recipes, action: :index }, { class: 'navbar-form' }) do %>
+              <div class='form-group'>
+                <%= text_field_tag :query, nil, placeholder: 'filter recipes', class: 'form-control', id: 'recipes-search' %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+
         <% if current_user %>
           <li><%= link_to 'New Recipe', new_recipe_path %></li>
           <li><%= link_to 'Logout', :logout %></li>

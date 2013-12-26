@@ -31,6 +31,7 @@ gem 'fog'
 gem 'font-awesome-rails'
 gem 'jbuilder', '>= 1.0.1'
 gem 'jquery-rails'
+gem 'jquery-ui-sass-rails'
 gem 'font-awesome-sass-rails'
 gem "less-rails"
 gem 'pg'
