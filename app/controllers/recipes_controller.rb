@@ -96,4 +96,15 @@ class RecipesController < ApplicationController
       ]
     )
   end
+
+  def action_allowed?(args = params)
+    case args[:action]
+    when 'create', 'new'
+      current_user
+    when 'index', 'show', 'add_image', 'filter'
+      true
+    when 'edit', 'update', 'destroy', 'delete'
+      current_user && recipe.user == current_user
+    end
+  end
 end

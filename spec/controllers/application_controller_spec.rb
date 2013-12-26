@@ -4,14 +4,6 @@ describe ApplicationController do
   let(:application_controller) { ApplicationController.new }
   let(:user) { mock_model User }
 
-  describe '#current_permission' do
-    it 'retrieves the a new permission object' do
-      application_controller.stub :current_user
-      Permission.should_receive :new
-      application_controller.current_permission
-    end
-  end
-
   describe 'private methods' do
     let(:session) { Hash.new }
 

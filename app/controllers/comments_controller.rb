@@ -36,4 +36,13 @@ class CommentsController < ApplicationController
       :recipe_id
     )
   end
+
+  def action_allowed?
+    case args[:action]
+    when 'create', 'new'
+      current_user
+    when 'update', 'edit', 'destroy'
+      current_user == args[:comment].user
+    end
+  end
 end

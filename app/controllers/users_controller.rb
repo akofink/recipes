@@ -57,8 +57,18 @@ class UsersController < ApplicationController
   def set_user
     @user ||= User.find_by(id: params[:id]) || current_user
   end
+  alias_method :user, :set_user
 
   def user_params
     params.require(:user).permit!
+  end
+
+  def action_allowed?(args = params)
+    case args[:action]
+    when 'show', 'edit', 'update', 'delete', 'destroy'
+      current_user == user
+    when 'new', 'create'
+      true
+    end
   end
 end
