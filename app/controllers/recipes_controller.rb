@@ -4,21 +4,23 @@ class RecipesController < ApplicationController
   def index
     @recipes ||= user.recipes.order(:title) if user
     @recipes ||= Recipe.order(:title)
-
+    @recipes = @recipes.page params[:page]
   end
 
   def filter
+    @recipes ||= user.recipes if user
+    @recipes ||= Recipe.all
+
     term = "%#{params[:term]}%"
-    @recipes = Recipe
+    @recipes = @recipes
     .where(
       "title ilike ? OR body ilike ?",
       term,
       term
-    ).order(:title)
+    )
+    .order(:title)
+    .page params[:page]
     render partial: 'all'
-  end
-
-  def filter_recipes
   end
 
   def show

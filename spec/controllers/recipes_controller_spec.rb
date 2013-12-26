@@ -13,8 +13,10 @@ describe RecipesController do
     before(:each) do
       recipes_controller.stub(:flash).and_return flash
       recipes_controller.stub(:recipe_params).and_return params
+      recipes_controller.stub(:params).and_return params
       recipes_controller.stub :render
       recipes_controller.stub :redirect_to
+      recipes.stub(:page).and_return 1
       errors.stub(:full_messages).and_return ''
     end
 
@@ -28,7 +30,7 @@ describe RecipesController do
 
       it 'orders all recipes by title' do
         recipes_controller.should_receive(:user).and_return nil
-        Recipe.should_receive(:order).with :title
+        Recipe.should_receive(:order).with(:title).and_return recipes
         recipes_controller.index
       end
     end

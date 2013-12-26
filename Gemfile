@@ -42,6 +42,7 @@ gem 'sass'
 gem "therubyracer"
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

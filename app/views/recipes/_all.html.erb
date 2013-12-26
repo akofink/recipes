@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Recipes</th>
+      <%= hidden_field_tag :user, :id, id: 'user-id', value: @user.id %>
     </tr>
   </thead>
 
@@ -12,4 +13,6 @@
       </tr>
     <% end %>
   </tbody>
+
+  <%= will_paginate @recipes %>
 </table>

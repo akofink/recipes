@@ -6,4 +6,6 @@ class Recipe < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   belongs_to :user
   accepts_nested_attributes_for :images, allow_destroy: true
+
+  self.per_page = 20
 end

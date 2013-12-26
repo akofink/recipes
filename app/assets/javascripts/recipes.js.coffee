@@ -6,7 +6,11 @@ $(document).on 'ready page:load', ->
   $('#recipes-search').on 'keyup', ->
     $.ajax
       url: "/recipes/filter",
-      data: { term: $(this).val() },
+      delay: 500,
+      data: {
+        term: $(this).val(),
+        user_id: $('#user-id').val()
+      },
       success: (data, status, xhr) ->
         $('#recipes-partial').html(data)
 
