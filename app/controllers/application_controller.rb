@@ -3,12 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def current_permission(args = {})
-    @current_permission ||= Permission.new(args.merge current_user: current_user)
-  end
-  delegate :allow?, to: :current_permission
-  helper_method :allow?
-
 private
 
   def login_with_session(user)
@@ -26,12 +20,5 @@ private
 
   def redirect_back(default = :root)
     redirect_to request.env['HTTP_REFERER'] ? :back : default
-  end
-
-  def authorize(args = {})
-    unless current_permission(args).allow?(params[:controller], params[:action])
-      flash[:error] = [current_permission.error_message || 'Invalid credentials']
-      redirect_back
-    end
   end
 end

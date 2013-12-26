@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def allow?
+    true
+  end
+
   def md(text)
     Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,

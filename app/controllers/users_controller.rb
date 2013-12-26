@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action { authorize({ user: set_user }) }
-
   def create
     @user = User.new(user_params)
 

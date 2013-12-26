@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-  before_action { authorize({ recipe: @recipe }) }
-
   def index
     @recipes ||= user.recipes.order(:title) if user
     @recipes ||= Recipe.order(:title)
