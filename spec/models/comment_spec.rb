@@ -12,8 +12,8 @@ describe Comment do
   end
 
   describe '.chronological' do
-    it 'orders by updated_at' do
-      Comment.should_receive(:order).with(:updated_at)
+    it 'orders by created_at' do
+      Comment.should_receive(:order).with(:created_at)
       Comment.chronological
     end
   end

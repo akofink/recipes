@@ -14,3 +14,6 @@ $(document).on 'ready page:load', ->
       success: (data, status, xhr) ->
         $('#recipes-partial').html(data)
 
+  $('#comment-body').tooltip
+    placement: 'right',
+    trigger: 'focus'

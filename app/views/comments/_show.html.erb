@@ -1,9 +1,18 @@
 <div class='comment'>
   <p class='comment-body'><%= comment.body %></p>
 
-  <% if allow? 'comments', 'edit', comment: comment %>
-    <%= link_to edit_comment_path(comment), remote: true, 'data-id' => comment.id do %>
-      <i class='icon-pencil'></i> Edit
+  <% if comment.user == current_user %>
+    <%= link_to edit_comment_path(comment),
+      remote: true,
+      class: 'edit-comment' do %>
+      <%= fa_icon "pencil", text: "Edit" %>
+    <% end %>
+    <%= link_to comment_path(comment),
+      method: 'delete',
+      remote: true,
+      confirm: 'Delete your comment?',
+      class: 'delete-comment' do %>
+      <%= fa_icon "times", text: "Delete" %>
     <% end %>
   <% end %>
 </div>

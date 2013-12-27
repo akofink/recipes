@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      flash[:success] = ["The recipe was successfully created"]
+      flash[:success] = "The recipe was successfully created"
       redirect_to @recipe
     else
       flash[:error] = @recipe.errors.full_messages
@@ -47,15 +47,12 @@ class RecipesController < ApplicationController
 
   def update
     set_recipe
-    @recipe.update(recipe_params)
 
-    flash[:error] = @recipe.errors.full_messages
-
-    if flash[:error].any?
-      render :new
-    else
-      flash[:success] = ["The recipe was successfully updated"]
+    if @recipe.update(recipe_params)
+      flash[:success] = "The recipe was successfully updated"
       redirect_to @recipe
+    else
+      render :new
     end
   end
 
@@ -75,7 +72,9 @@ class RecipesController < ApplicationController
   def set_recipe
     @recipe ||= Recipe.find_by id: params[:id]
     @images ||= @recipe.images + [ Image.new ]
+    @recipe
   end
+  alias_method :recipe, :set_recipe
 
   def user
     @user ||= User.find_by id: params[:user_id]

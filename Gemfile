@@ -21,9 +21,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-  :github => 'anjlab/bootstrap-rails',
-  :branch => '3.0.0'
+gem 'bootstrap-sass'
 gem 'bcrypt-ruby', '>= 3.0.0'
 gem 'carrierwave'
 gem 'coffee-rails', '>= 4.0.0'
@@ -32,7 +30,6 @@ gem 'font-awesome-rails'
 gem 'jbuilder', '>= 1.0.1'
 gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
-gem 'font-awesome-sass-rails'
 gem "less-rails"
 gem 'pg'
 gem 'redcarpet'

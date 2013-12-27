@@ -9,12 +9,17 @@
 </div>
 
 <%= link_to :root do %>
-  <i class='icon-arrow-left'></i> Back
+  <%= fa_icon "arrow-left", text: "Back" %>
 <% end %>
 
 <% if current_user && @recipe.user == current_user %>
   <%= link_to edit_recipe_path(@recipe) do %>
-    <i class='icon-pencil'></i> Edit
+    <%= fa_icon "pencil", text: "Edit Recipe" %>
+  <% end %>
+
+  <%= link_to new_comment_path(recipe_id: @recipe.id),
+    remote: true do %>
+    <%= fa_icon "plus", text: "Add Comment" %>
   <% end %>
 <% end %>
 

@@ -13,9 +13,10 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require jquery.ui.all
-//= require twitter/bootstrap
 //= require_tree .
+//= require_self
 
 $(document).on('ready page:load', function() {
   $(this).trigger('turbo:ready');

@@ -3,6 +3,6 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   def self.chronological
-    order :updated_at
+    order :created_at
   end
 end

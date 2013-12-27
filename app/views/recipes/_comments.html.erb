@@ -1,7 +1,6 @@
-<div class='row' id='comments'>
+<div id='comments'>
   <legend>Comments</legend>
-  <div class='col-md-5'>
-    <%= render 'comments/form', comment: Comment.new, recipe: @recipe %>
+  <div class='col-md-6' id='comments-list'>
+    <%= render 'comments/all', comments: @recipe.comments.chronological, recipe: @recipe %>
   </div>
-  <%= render 'comments/all', comments: @recipe.comments.chronological %>
 </div>

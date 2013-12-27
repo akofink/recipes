@@ -2,12 +2,10 @@
 
 <div id='recipes-partial' class='col-md-8'>
   <%= render 'all' %>
-</div>
 
-<br>
-
-<% if current_user %>
-  <%= link_to new_recipe_path do %>
-    <i class='icon-plus-sign'></i> New Recipe
+  <% if current_user %>
+    <%= link_to new_recipe_path do %>
+      <%= fa_icon 'plus', text: 'New Recipe' %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
