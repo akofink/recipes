@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'Login successful'
       redirect_to :account
     else
-      flash[:error] = 'Login failed!'
+      flash[:warning] = 'Login failed!'
       redirect_to :login
     end
   end

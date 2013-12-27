@@ -37,10 +37,12 @@ class CommentsController < ApplicationController
     )
   end
 
-  def action_allowed?
+  def action_allowed?(args = params)
     case args[:action]
     when 'create', 'new'
-      current_user
+      if current_user
+        render nothing: true, status: 400
+      end
     when 'update', 'edit', 'destroy'
       current_user == args[:comment].user
     end

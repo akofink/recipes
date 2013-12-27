@@ -12,7 +12,7 @@
   <i class='icon-arrow-left'></i> Back
 <% end %>
 
-<% if allow? 'recipes', 'edit' %>
+<% if current_user && @recipe.user == current_user %>
   <%= link_to edit_recipe_path(@recipe) do %>
     <i class='icon-pencil'></i> Edit
   <% end %>
