@@ -7,6 +7,5 @@ module AuthorizationHelper
   end
 
   def action_allowed?(args = params)
-    current_user.try :admin?
   end
 end

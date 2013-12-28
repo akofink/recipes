@@ -12,6 +12,13 @@ feature 'User logs in' do
     expect(page).to have_content('Login failed!')
   end
 
+  scenario 'and then logs out' do
+    User.create(email: 'akrecipes@mailinator.com', password: 'Passw0rd', password_confirmation: 'Passw0rd')
+    log_in email: 'akrecipes@mailinator.com', password: 'Passw0rd'
+    click_link 'Logout'
+    expect(page).to have_content('Logged out')
+  end
+
   def log_in(args = {})
     visit '/'
     click_link 'Login'
