@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def link_back(default = :root)
+    link_to (request.env['HTTP_REFERER'] ? :back : default) do
+      yield
+    end
+  end
+
   def md(text)
     Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,
