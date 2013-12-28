@@ -3,11 +3,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = ["The user was successfully created"]
+      flash[:success] = "The user was successfully created"
       login_with_session(@user)
       redirect_to :account
     else
-      flash[:error] = @user.errors.full_messages
       render :new
     end
   end
@@ -18,21 +17,19 @@ class UsersController < ApplicationController
 
   def update
     set_user
-    @user.update(user_params)
 
-    if @user.errors.any?
-      flash[:error] = @user.errors.full_messages
-      render :edit
-    else
-      flash[:success] = ['User successfully updated']
+    if @user.update(user_params)
+      flash[:success] = 'User successfully updated'
       render :show
+    else
+      render :edit
     end
   end
 
   def destroy
     set_user
     @user.destroy
-    flash[:info] = ['User deleted']
+    flash[:info] = 'User deleted'
     redirect_to :root
   end
 

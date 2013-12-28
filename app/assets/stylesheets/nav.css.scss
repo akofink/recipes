@@ -1,0 +1,15 @@
+$brown: #757;
+
+nav {
+  .navbar {
+    .navbar-inner {
+      .right {
+        float: right;
+      }
+    }
+  }
+}
+
+#logo.active {
+  color: $brown;
+}

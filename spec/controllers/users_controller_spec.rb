@@ -27,7 +27,6 @@ describe UsersController do
       it 'handles invalid params' do
         User.should_receive(:new).with({}).and_return user
         user.should_receive(:save).and_return false
-        user.should_receive(:errors).and_return errors
         users_controller.create
       end
     end
@@ -46,13 +45,6 @@ describe UsersController do
       it 'updates the model' do
         user.should_receive :update
         users_controller.update
-        users_controller.flash[:success].should_not be_nil
-      end
-
-      it 'handles validation errors' do
-        user.should_receive(:errors).at_least(:once).and_return errors
-        users_controller.update
-        users_controller.flash[:error].should_not be_nil
       end
     end
 

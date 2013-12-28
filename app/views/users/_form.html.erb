@@ -1,14 +1,16 @@
+<%= render 'shared/errors', model: @user %>
+
 <%= form_for @user, class: 'form-horizontal' do |f| %>
   <div class="form-group input-group">
     <span class='input-group-addon'>
-      <i class="icon-envelope-alt"></i>
+      <%= fa_icon 'envelope' %>
     </span>
     <%= f.text_field :email, placeholder: "email", class: 'form-control' %>
   </div>
 
   <div class="form-group input-group">
-    <span class='input-group-addon'>
-      <i class="icon-key"></i>
+    <span class = 'input-group-addon'>
+      <%= fa_icon 'key' %>
     </span>
     <%= f.password_field :password,
       placeholder: "password",
@@ -18,7 +20,7 @@
   </div>
   <div class="form-group input-group">
     <span class='input-group-addon'>
-      <i class="add-on icon-key"></i>
+      <%= fa_icon 'key' %>
     </span>
     <%= f.password_field :password_confirmation, 
       placeholder: "password_confirmation", 
