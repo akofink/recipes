@@ -10,6 +10,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'coveralls', require: false
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'rspec-rails'
