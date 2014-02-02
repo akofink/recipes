@@ -120,6 +120,8 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.4.0)
     libv8 (3.16.14.3)
+    lipsum (1.2.0)
+      nokogiri
     listen (2.4.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -259,6 +261,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-sass-rails
   less-rails
+  lipsum
   pg
   rails (>= 4.0)
   rails_12factor
