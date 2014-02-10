@@ -25,7 +25,6 @@ end
 
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby', '>= 3.0.0'
-gem 'capybara-webkit'
 gem 'carrierwave'
 gem 'coffee-rails', '>= 4.0.0'
 gem 'fog'
