@@ -7,5 +7,5 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  self.per_page = 20
+  self.per_page = 12
 end
