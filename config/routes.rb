@@ -4,6 +4,7 @@ Recipes::Application.routes.draw do
   resource :pages
 
   resources :recipes do
+    resources :comments
     collection do
       get :filter
     end

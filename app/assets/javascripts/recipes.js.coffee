@@ -17,3 +17,8 @@ $(document).on 'ready page:load', ->
   $('#comment-body').tooltip
     placement: 'right',
     trigger: 'focus'
+
+  $('#recipe-body').popover
+    placement: 'right',
+    trigger: 'focus',
+    html: true,

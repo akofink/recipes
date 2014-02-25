@@ -17,8 +17,11 @@
       <%= form.text_area :body, 
         placeholder: "Ingredients and Directions", 
         rows: "15", 
-        title: 'You can use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" class="tooltip-link">markdown</a> here.',
-        class: "form-control"
+        data: {
+          content: 'You can use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">markdown</a> here.'
+        },
+        class: "form-control",
+        id: 'recipe-body'
       %>
   </div>
 

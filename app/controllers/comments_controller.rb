@@ -2,9 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new comment_params
     @comment.save!
-    render partial: 'all',
-      locals: {
-      comments: @comment.recipe.comments.chronological }
+    redirect_to @comment.recipe
   end
 
   def destroy
@@ -33,7 +31,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find params[:id]
     @comment.update_attributes comment_params
-    render partial: 'all', locals: { comments: @comment.recipe.comments.chronological }
+    redirect_to @comment.recipe
   end
 
   private
