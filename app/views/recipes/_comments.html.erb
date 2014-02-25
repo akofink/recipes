@@ -1,11 +1,8 @@
-<div id='comments'>
-  <legend>Comments</legend>
-  <div class='col-md-6' id='comments-list'>
-    <%= render 'comments/all', comments: @recipe.comments.chronological, recipe: @recipe %>
-    <% if current_user %>
-      <%= link_to "/recipes/#{@recipe.id}/comments/new" do %>
-        <%= fa_icon :plus %> New Comment
-      <% end %>
+<div class='col-md-6' id='comments-list'>
+  <%= render 'comments/all', comments: @recipe.comments.chronological, recipe: @recipe %>
+  <% if current_user %>
+    <%= link_to "/recipes/#{@recipe.id}/comments/new" do %>
+      <%= fa_icon :plus %> New Comment
     <% end %>
-  </div>
+  <% end %>
 </div>

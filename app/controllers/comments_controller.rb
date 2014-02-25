@@ -31,7 +31,8 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find params[:id]
     @comment.update_attributes comment_params
-    redirect_to @comment.recipe
+    @recipe = @comment.recipe
+    render partial: 'recipes/comments'
   end
 
   private
@@ -50,10 +51,8 @@ class CommentsController < ApplicationController
     case args[:action]
     when 'create', 'new'
       current_user
-    when 'edit', 'destroy'
+    when 'edit', 'update', 'destroy'
       current_user == Comment.find(args[:id]).user
-    when 'update'
-      current_user.id == args[:comment][:user_id]
     end
   end
 end
