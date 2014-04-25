@@ -133,7 +133,7 @@ GEM
     libv8 (3.16.14.3)
     lipsum (1.2.0)
       nokogiri
-    listen (2.7.1)
+    listen (2.7.2)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
@@ -284,7 +284,7 @@ DEPENDENCIES
   rmagick
   rspec-rails
   sass
-  sass-rails
+  sass-rails (~> 4.0.2)
   sdoc
   simplecov
   therubyracer

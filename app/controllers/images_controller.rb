@@ -13,4 +13,10 @@ class ImagesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def action_allowed?
+    true
+  end
 end

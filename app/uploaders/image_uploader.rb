@@ -12,9 +12,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :crop
 
   def crop width = 500, height = 500
-    manipulate! do |image|
-      image.resize_to_fill width, height
-    end
+    #manipulate! do |image|
+      #image.resize_to_fill width, height
+    #end
   end
 
   def store_dir

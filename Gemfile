@@ -1,4 +1,4 @@
-ruby '2.0.0'
+ruby '2.1.0'
 
 source 'https://rubygems.org'
 
@@ -36,7 +36,7 @@ gem "less-rails"
 gem 'pg'
 gem 'redcarpet'
 gem 'rmagick'
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.2'
 gem 'sass'
 gem "therubyracer"
 gem 'turbolinks'
