@@ -16,6 +16,8 @@ describe RecipesController do
       recipes_controller.stub(:params).and_return params
       recipes_controller.stub :render
       recipes_controller.stub :redirect_to
+      recipes_controller.stub(:set_recipe).and_return recipe
+      recipes_controller.stub(:recipe).and_return recipe
       recipes.stub(:page).and_return 1
       errors.stub(:full_messages).and_return ''
     end
@@ -87,6 +89,16 @@ describe RecipesController do
     end
 
     describe '#update' do
+      it 'updates using safe parameters' do
+        recipe.should_receive(:update).with params
+        recipes_controller.update
+      end
+
+      it 'errs back to recipes#new' do
+        recipe.stub(:update)
+        recipes_controller.should_receive(:render).with :new
+        recipes_controller.update
+      end
     end
   end
 end
