@@ -18,4 +18,8 @@ describe Recipe do
 
     @recipe.should_not be_valid
   end
+
+  it 'can be filtered' do
+    Recipe.should respond_to :filter
+  end
 end
