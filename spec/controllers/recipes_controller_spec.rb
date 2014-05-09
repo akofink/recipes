@@ -23,6 +23,22 @@ describe RecipesController do
     end
 
     describe '#destroy' do
+      it 'destroys the recipe' do
+        recipe.should_receive(:destroy).and_return recipe
+        recipes_controller.destroy
+      end
+
+      it 'redirects to the home page on success' do
+        recipe.stub(:destroy).and_return recipe
+        recipes_controller.should_receive(:redirect_to).with :root
+        recipes_controller.destroy
+      end
+
+      it 'errs back' do
+        recipe.stub(:destroy)
+        recipes_controller.should_receive :redirect_back
+        recipes_controller.destroy
+      end
     end
 
     describe '#edit' do

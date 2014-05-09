@@ -12,10 +12,13 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    set_recipe
-    @recipe.destroy
-    flash[:info] = 'The recipe was successfully deleted'
-    redirect_to :root
+    if recipe.destroy
+      flash[:info] = 'The recipe was successfully deleted'
+      redirect_to :root
+    else
+      flash[:error] = 'The recipe could not be deleted.'
+      redirect_back
+    end
   end
 
   def edit
@@ -63,7 +66,7 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe ||= Recipe.find_by id: params[:id]
-    @images ||= @recipe.images + [ Image.new ]
+    @images ||= @recipe.try(:images)+ [ Image.new ]
     @recipe
   end
   alias_method :recipe, :set_recipe
