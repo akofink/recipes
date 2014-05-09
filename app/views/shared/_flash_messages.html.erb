@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
-  <div class='alert alert-dismissable alert-<%= key.to_s %>'>
+  <div class='alert alert-dismissable alert-<%= flash_class(key) %>'>
     <button type="button"
       class="close"
       data-dismiss="alert"

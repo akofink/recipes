@@ -17,4 +17,14 @@ describe ApplicationHelper do
       md("# Header").downcase[/<h1>/].should_not be_nil
     end
   end
+
+  describe '#flash_class' do
+    it 'aliases error to danger' do
+      flash_class(:error).should == 'danger'
+    end
+
+    it 'keeps other keys as they are' do
+      flash_class(:foo).should == 'foo'
+    end
+  end
 end

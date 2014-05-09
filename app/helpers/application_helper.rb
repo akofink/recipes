@@ -18,4 +18,13 @@ module ApplicationHelper
       highlight: true
     ).render(text).html_safe
   end
+
+  def flash_class(key)
+    case key
+    when :error
+      'danger'
+    else
+      key.to_s
+    end
+  end
 end
