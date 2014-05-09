@@ -1,38 +1,4 @@
 class RecipesController < ApplicationController
-  def index
-    @recipes ||= user.recipes.order(:title) if user
-    @recipes ||= Recipe.order(:title)
-    @recipes = @recipes.page params[:page]
-  end
-
-  def filter
-    @recipes ||= user.recipes if user
-    @recipes ||= Recipe.all
-
-    term = "%#{params[:term]}%"
-    @recipes = @recipes
-    .where(
-      "title ilike ? OR body ilike ?",
-      term,
-      term
-    )
-    .order(:title)
-    .page params[:page]
-    render partial: 'all'
-  end
-
-  def show
-    set_recipe
-  end
-
-  def new
-    @recipe = Recipe.new
-  end
-
-  def edit
-    set_recipe
-  end
-
   def create
     @recipe = Recipe.new(recipe_params)
 
@@ -43,6 +9,34 @@ class RecipesController < ApplicationController
       flash[:error] = @recipe.errors.full_messages
       render :new
     end
+  end
+
+  def destroy
+    set_recipe
+    @recipe.destroy
+    flash[:info] = 'The recipe was successfully deleted'
+    redirect_to :root
+  end
+
+  def edit
+    set_recipe
+  end
+
+  def filter
+    @recipes = recipes.filter params[:term]
+    render partial: 'all'
+  end
+
+  def index
+    paginated_recipes
+  end
+
+  def new
+    @recipe = Recipe.new
+  end
+
+  def show
+    set_recipe
   end
 
   def update
@@ -56,18 +50,18 @@ class RecipesController < ApplicationController
     end
   end
 
-  def destroy
-    set_recipe
-    @recipe.destroy
-    flash[:info] = ['The recipe was successfully deleted']
-    redirect_to :root
-  end
-
-  def delete
-    set_recipe
-  end
-
   private
+
+  def recipes
+    @recipes = (
+      (user.recipes if user) ||
+      (Recipe.all)
+    ).order(:title)
+  end
+
+  def paginated_recipes
+    @recipes = recipes.page params[:page]
+  end
 
   def set_recipe
     @recipe ||= Recipe.find_by id: params[:id]
@@ -82,17 +76,17 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params
-    .require(:recipe)
-    .permit(
-      :title,
-      :body,
+      .require(:recipe)
+      .permit(
+    :title,
+    :body,
+    :user_id,
+    images_attributes: [
+      :id,
+      :data,
       :user_id,
-      images_attributes: [
-        :id,
-        :data,
-        :user_id,
-        :recipe_id
-      ]
+      :recipe_id
+    ]
     )
   end
 

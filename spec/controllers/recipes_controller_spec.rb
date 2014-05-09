@@ -20,39 +20,21 @@ describe RecipesController do
       errors.stub(:full_messages).and_return ''
     end
 
-    describe '#index' do
-      it 'orders the recipes of a user by title' do
-        recipes_controller.should_receive(:user).at_least(:once).and_return user
-        user.should_receive(:recipes).and_return recipes
-        recipes.should_receive(:order).with :title
-        recipes_controller.index
-      end
-
-      it 'orders all recipes by title' do
-        recipes_controller.should_receive(:user).and_return nil
-        Recipe.should_receive(:order).with(:title).and_return recipes
-        recipes_controller.index
-      end
-    end
-
-    describe '#show' do
-      it 'shows the current recipe' do
-        recipes_controller.should_receive :set_recipe
-        recipes_controller.show
-      end
-    end
-
-    describe '#new' do
-      it 'uses a new recipe' do
-        Recipe.should_receive :new
-        recipes_controller.new
-      end
+    describe '#destroy' do
     end
 
     describe '#edit' do
       it 'uses an existing recipe' do
         recipes_controller.should_receive(:set_recipe)
         recipes_controller.edit
+      end
+    end
+
+    describe '#filter' do
+      it 'uses the filter method of the Recipe model' do
+        recipes_controller.stub(:recipes).and_return recipes
+        recipes.should_receive :filter
+        recipes_controller.filter
       end
     end
 
@@ -73,13 +55,38 @@ describe RecipesController do
       end
     end
 
+    describe '#index' do
+      it 'orders the recipes of a user by title' do
+        recipes_controller.should_receive(:user)
+          .at_least(:once).and_return user
+        user.should_receive(:recipes).and_return recipes
+        recipes.should_receive(:order).with(:title).and_return recipes
+        recipes_controller.index
+      end
+
+      it 'orders all recipes by title' do
+        recipes_controller.should_receive(:user).and_return nil
+        Recipe.stub(:all).and_return recipe
+        recipe.should_receive(:order).with(:title).and_return recipes
+        recipes_controller.index
+      end
+    end
+
+    describe '#new' do
+      it 'uses a new recipe' do
+        Recipe.should_receive :new
+        recipes_controller.new
+      end
+    end
+
+    describe '#show' do
+      it 'shows the current recipe' do
+        recipes_controller.should_receive :set_recipe
+        recipes_controller.show
+      end
+    end
+
     describe '#update' do
-    end
-
-    describe '#destroy' do
-    end
-
-    describe '#delete' do
     end
   end
 end
