@@ -50,7 +50,7 @@ describe RecipesController do
 
     describe '#filter' do
       it 'uses the filter method of the Recipe model' do
-        recipes_controller.stub(:recipes).and_return recipes
+        recipes_controller.stub(:paginated_recipes).and_return recipes
         recipes.should_receive :filter
         recipes_controller.filter
       end

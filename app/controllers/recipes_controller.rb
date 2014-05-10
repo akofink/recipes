@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
   end
 
   def filter
-    @recipes = recipes.filter params[:term]
+    @recipes = paginated_recipes.filter params[:term]
     render partial: 'all'
   end
 
@@ -61,7 +61,7 @@ class RecipesController < ApplicationController
   end
 
   def paginated_recipes
-    @recipes = recipes.page params[:page]
+    @recipes = recipes.page(params[:page] || 1)
   end
 
   def set_recipe
