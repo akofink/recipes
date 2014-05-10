@@ -5,4 +5,8 @@ class Image < ActiveRecord::Base
 
   belongs_to :recipe
   belongs_to :user
+
+  def thumb
+    data.thumb
+  end
 end

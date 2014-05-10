@@ -7,6 +7,10 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   storage Rails.env.production? ? :fog : :file
 
+  version :thumb do
+    process :resize_to_fill => [200,200]
+  end
+
   def store_dir
     if Rails.env.production?
       "uploads/images/#{model.class.to_s.pluralize.downcase}/#{model.recipe_id}"
