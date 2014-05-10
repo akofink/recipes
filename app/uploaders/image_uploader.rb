@@ -3,25 +3,27 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
+  process :resize_to_limit => [500, 500]
+
   if Rails.env.production?
     storage :fog
   else
     storage :file
   end
 
-  process :crop
-
-  def crop width = 500, height = 500
-    #manipulate! do |image|
-      #image.resize_to_fill width, height
-    #end
-  end
-
   def store_dir
-    if model.recipe_id
-      "uploads/images/recipes/#{model.recipe_id}"
+    if Rails.env.production?
+      if model.recipe_id
+        "uploads/images/recipes/#{model.recipe_id}"
+      else
+        "uploads/images/#{model.id}"
+      end
     else
-      "uploads/images/#{model.id}"
+      if model.recipe_id
+        "images/recipes/#{model.recipe_id}"
+      else
+        "images/#{model.id}"
+      end
     end
   end
 

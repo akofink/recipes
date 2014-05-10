@@ -35,7 +35,7 @@ gem 'jquery-ui-sass-rails'
 gem "less-rails"
 gem 'pg'
 gem 'redcarpet'
-gem 'rmagick'
+gem 'rmagick', :require => 'RMagick'
 gem 'sass-rails', '~> 4.0.2'
 gem 'sass'
 gem "therubyracer"

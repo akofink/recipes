@@ -21,4 +21,4 @@ config/database.yml
 # Ignore coverage results
 coverage
 
-public/uploads
+public/images
