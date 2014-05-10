@@ -47,7 +47,8 @@ class RecipesController < ApplicationController
       flash[:success] = "The recipe was successfully updated"
       redirect_to @recipe
     else
-      render :new
+      flash[:error] = @recipe.errors.full_messages
+      render :edit
     end
   end
 

@@ -20,6 +20,8 @@ describe RecipesController do
       recipes_controller.stub(:recipe).and_return recipe
       recipes.stub(:page).and_return 1
       errors.stub(:full_messages).and_return ''
+      nil.stub :errors
+      nil.stub :full_messages
     end
 
     describe '#destroy' do
@@ -112,7 +114,7 @@ describe RecipesController do
 
       it 'errs back to recipes#new' do
         recipe.stub(:update)
-        recipes_controller.should_receive(:render).with :new
+        recipes_controller.should_receive(:render).with :edit
         recipes_controller.update
       end
     end
