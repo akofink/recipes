@@ -10,12 +10,14 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-rails'
   gem 'capybara'
+  gem 'simplecov'
   gem 'coveralls', require: false
   gem 'guard-rails'
   gem 'guard-rspec'
-  gem 'rspec-rails'
-  gem 'simplecov', require: false
+  gem 'guard-spork'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
 end
 
 group :production do

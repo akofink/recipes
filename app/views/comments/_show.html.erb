@@ -10,7 +10,7 @@
     <%= link_to comment_path(comment),
       method: 'delete',
       remote: true,
-      confirm: 'Delete your comment?',
+      data: { confirm: 'Delete your comment?' },
       class: 'delete-comment' do %>
       <%= fa_icon "times", text: "Delete" %>
     <% end %>
