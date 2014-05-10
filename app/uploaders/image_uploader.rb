@@ -5,25 +5,13 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   process :resize_to_limit => [500, 500]
 
-  if Rails.env.production?
-    storage :fog
-  else
-    storage :file
-  end
+  storage Rails.env.production? ? :fog : :file
 
   def store_dir
     if Rails.env.production?
-      if model.recipe_id
-        "uploads/images/recipes/#{model.recipe_id}"
-      else
-        "uploads/images/#{model.id}"
-      end
+      "uploads/images/#{model.class.to_s.pluralize.downcase}/#{model.recipe_id}"
     else
-      if model.recipe_id
-        "images/recipes/#{model.recipe_id}"
-      else
-        "images/#{model.id}"
-      end
+      "images/#{model.class.to_s.pluralize.downcase}/#{model.recipe_id}"
     end
   end
 
