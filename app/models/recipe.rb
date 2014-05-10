@@ -17,4 +17,16 @@ class Recipe < ActiveRecord::Base
       filter
     )
   end
+
+  def has_images?
+    images.present?
+  end
+
+  def random_image
+    images.sample || Image.new
+  end
+
+  def random_thumbnail_url
+    random_image.thumb.url.to_s
+  end
 end
