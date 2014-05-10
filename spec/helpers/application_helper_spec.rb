@@ -20,11 +20,11 @@ describe ApplicationHelper do
 
   describe '#flash_class' do
     it 'aliases error to danger' do
-      flash_class(:error).should == 'danger'
+      flash_class('error').should == 'danger'
     end
 
     it 'keeps other keys as they are' do
-      flash_class(:foo).should == 'foo'
+      flash_class('foo').should == 'foo'
     end
   end
 end

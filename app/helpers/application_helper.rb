@@ -21,10 +21,10 @@ module ApplicationHelper
 
   def flash_class(key)
     case key
-    when :error
+    when 'error'
       'danger'
     else
-      key.to_s
+      key
     end
   end
 end
