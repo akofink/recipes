@@ -1,5 +1,5 @@
-<%= will_paginate @recipes, class: 'pagination' %>
 <div class='container'>
+  <%= will_paginate @recipes, class: 'pagination col-md-12 text-center' %>
   <% @recipes.each do |recipe| %>
     <% if @recipes.index(recipe) % 4 == 0 %><div class='row'><% end %>
       <div class='col-md-3'>
@@ -12,4 +12,5 @@
     </div>
     <% if @recipes.index(recipe) % 4 == 3 %></div><% end %>
 <% end %>
+<%= will_paginate @recipes, class: 'pagination col-md-12 text-center' %>
 </div>
