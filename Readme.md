@@ -24,7 +24,7 @@ cd akrecipes
 
 #### Build Dependencies
 
-Install ruby 4.0.0 ([rbenv](https://github.com/sstephenson/rbenv) or [rvm](https://rvm.io/))
+Install ruby 2.1 ([rbenv](https://github.com/sstephenson/rbenv) or [rvm](https://rvm.io/))
 
 ```sh
 gem install bundler
@@ -34,6 +34,7 @@ bundle install
 #### Set Up Database
 
 Use [postgresql](http://www.postgresql.org/download/).
+On OS X, I use [Postgres.app](http://postgresapp.com/).
 
 Set up database user:
 ```SQL
