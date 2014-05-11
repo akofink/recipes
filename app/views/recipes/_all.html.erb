@@ -1,5 +1,10 @@
 <div class='container'>
-  <%= will_paginate @recipes, class: 'pagination col-md-12 text-center' %>
+  <div class='container col-md-12'>
+    <div class='col-md-2'>
+    </div>
+    <%= will_paginate @recipes, class: 'pagination col-md-8 text-center' %>
+    <div class='col-md-2'></div>
+  </div>
   <% @recipes.each do |recipe| %>
     <% if @recipes.index(recipe) % 4 == 0 %><div class='row'><% end %>
       <div class='col-md-3'>
