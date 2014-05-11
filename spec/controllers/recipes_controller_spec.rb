@@ -12,7 +12,6 @@ describe RecipesController do
   describe 'actions' do
     before(:each) do
       recipes_controller.stub(:flash).and_return flash
-      recipes_controller.stub(:recipe_params).and_return params
       recipes_controller.stub(:params).and_return params
       recipes_controller.stub :render
       recipes_controller.stub :redirect_to
@@ -20,6 +19,8 @@ describe RecipesController do
       recipes_controller.stub(:recipe).and_return recipe
       recipes.stub(:page).and_return 1
       errors.stub(:full_messages).and_return ''
+      params.stub(:require).and_return params
+      params.stub(:permit).and_return params
     end
 
     describe '#destroy' do
