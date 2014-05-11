@@ -1,18 +1,15 @@
-<table class='table table-hover'>
-  <%= will_paginate @recipes, class: 'pagination' %>
-
-  <thead>
-    <tr>
-      <th>Recipes</th>
-      <%= hidden_field_tag :user, :id, id: 'user-id', value: @user.try(:id) %>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr class='table-link'>
-        <td><%= link_to recipe.title, recipe, class: 'no-style button-link' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= will_paginate @recipes, class: 'pagination' %>
+<div class='container'>
+  <% @recipes.each do |recipe| %>
+    <% if @recipes.index(recipe) % 4 == 0 %><div class='row'><% end %>
+      <div class='col-md-3'>
+        <%= link_to recipe, class: 'no-style' do %></td>
+        <div class="thumbnail">
+          <h4><%= recipe.title.html_safe[0..30] %></h4>
+          <%= image_tag recipe.random_thumbnail_url, class: 'img-responsive img-thumbnail' %>
+        </div>
+      <% end %>
+    </div>
+    <% if @recipes.index(recipe) % 4 == 3 %></div><% end %>
+<% end %>
+</div>

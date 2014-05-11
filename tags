@@ -41,6 +41,7 @@ UsersController	app/controllers/users_controller.rb	/^class UsersController < Ap
 UsersHelper	app/helpers/users_helper.rb	/^module UsersHelper$/;"	m
 about	app/controllers/pages_controller.rb	/^  def about$/;"	f	class:PagesController
 action_allowed?	app/controllers/comments_controller.rb	/^  def action_allowed?(args = params)$/;"	f	class:CommentsController
+action_allowed?	app/controllers/images_controller.rb	/^  def action_allowed?$/;"	f	class:ImagesController
 action_allowed?	app/controllers/pages_controller.rb	/^  def action_allowed?(args = params)$/;"	f	class:PagesController
 action_allowed?	app/controllers/recipes_controller.rb	/^  def action_allowed?(args = params)$/;"	f	class:RecipesController
 action_allowed?	app/controllers/sessions_controller.rb	/^  def action_allowed?(args = params)$/;"	f	class:SessionsController
@@ -66,10 +67,8 @@ create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:Session
 create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
 create_recipes	db/data/seed_development_data.rb	/^  def self.create_recipes$/;"	F	class:SeedDevelopmentData
 create_users	db/data/seed_development_data.rb	/^  def self.create_users$/;"	F	class:SeedDevelopmentData
-crop	app/uploaders/image_uploader.rb	/^  def crop width = 500, height = 500$/;"	f	class:ImageUploader
 current_user	app/controllers/application_controller.rb	/^  def current_user$/;"	f	class:ApplicationController
 delete	app/controllers/images_controller.rb	/^  def delete$/;"	f	class:ImagesController
-delete	app/controllers/recipes_controller.rb	/^  def delete$/;"	f	class:RecipesController
 delete	app/controllers/users_controller.rb	/^  def delete$/;"	f	class:UsersController
 destroy	app/controllers/comments_controller.rb	/^  def destroy$/;"	f	class:CommentsController
 destroy	app/controllers/images_controller.rb	/^  def destroy$/;"	f	class:ImagesController
@@ -81,6 +80,8 @@ edit	app/controllers/recipes_controller.rb	/^  def edit$/;"	f	class:RecipesContr
 edit	app/controllers/users_controller.rb	/^  def edit$/;"	f	class:UsersController
 extension_white_list	app/uploaders/image_uploader.rb	/^  def extension_white_list$/;"	f	class:ImageUploader
 filter	app/controllers/recipes_controller.rb	/^  def filter$/;"	f	class:RecipesController
+flash_class	app/helpers/application_helper.rb	/^  def flash_class(key)$/;"	f	class:ApplicationHelper
+has_images?	app/models/recipe.rb	/^  def has_images?$/;"	f	class:Recipe
 index	app/controllers/recipes_controller.rb	/^  def index$/;"	f	class:RecipesController
 index	app/controllers/users_controller.rb	/^  def index$/;"	f	class:UsersController
 link_back	app/helpers/application_helper.rb	/^  def link_back(default = :root)$/;"	f	class:ApplicationHelper
@@ -94,9 +95,13 @@ new	app/controllers/images_controller.rb	/^  def new$/;"	f	class:ImagesControlle
 new	app/controllers/recipes_controller.rb	/^  def new$/;"	f	class:RecipesController
 new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
 new	app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
+paginated_recipes	app/controllers/recipes_controller.rb	/^  def paginated_recipes$/;"	f	class:RecipesController
 paragraphs	db/data/seed_development_data.rb	/^  def self.paragraphs$/;"	F	class:SeedDevelopmentData
 rand_user	db/data/seed_development_data.rb	/^  def self.rand_user$/;"	F	class:SeedDevelopmentData
+random_image	app/models/recipe.rb	/^  def random_image$/;"	f	class:Recipe
+random_thumbnail_url	app/models/recipe.rb	/^  def random_thumbnail_url$/;"	f	class:Recipe
 recipe_params	app/controllers/recipes_controller.rb	/^  def recipe_params$/;"	f	class:RecipesController
+recipes	app/controllers/recipes_controller.rb	/^  def recipes$/;"	f	class:RecipesController
 redirect_back	app/controllers/application_controller.rb	/^  def redirect_back(default = :root)$/;"	f	class:ApplicationController
 run	db/data/seed_development_data.rb	/^  def self.run!$/;"	F	class:SeedDevelopmentData
 set_recipe	app/controllers/recipes_controller.rb	/^  def set_recipe$/;"	f	class:RecipesController
@@ -106,6 +111,7 @@ show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersControlle
 sign_up	spec/features/user_signs_up_spec.rb	/^  def sign_up(args = {})$/;"	f
 store_dir	app/uploaders/image_uploader.rb	/^  def store_dir$/;"	f	class:ImageUploader
 strings	db/data/seed_development_data.rb	/^  def self.strings$/;"	F	class:SeedDevelopmentData
+thumb	app/models/image.rb	/^  def thumb$/;"	f	class:Image
 update	app/controllers/comments_controller.rb	/^  def update$/;"	f	class:CommentsController
 update	app/controllers/recipes_controller.rb	/^  def update$/;"	f	class:RecipesController
 update	app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersController

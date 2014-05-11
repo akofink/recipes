@@ -1,11 +1,13 @@
 <%= render 'shared/github_ribbon' %>
 
-<div id='recipes-partial' class='col-md-8'>
-  <%= render 'all' %>
+<div class='container'>
+  <div id='recipes-partial' class='col-md-12 center'>
+    <%= render 'all' %>
 
-  <% if current_user %>
-    <%= link_to new_recipe_path do %>
-      <%= fa_icon 'plus', text: 'New Recipe' %>
+    <% if current_user %>
+      <%= link_to new_recipe_path do %>
+        <%= fa_icon 'plus', text: 'New Recipe' %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

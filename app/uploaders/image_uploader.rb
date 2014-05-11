@@ -3,7 +3,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  process :resize_to_limit => [500, 500]
+  process :resize_to_fill => [500, 500]
 
   storage :fog if Rails.env.production?
 

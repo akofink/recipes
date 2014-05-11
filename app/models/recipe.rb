@@ -23,10 +23,26 @@ class Recipe < ActiveRecord::Base
   end
 
   def random_image
-    images.sample || Image.new
+    images.sample || google_image
   end
 
   def random_thumbnail_url
-    random_image.thumb.url.to_s
+    (
+      random_image.try(:thumb).try(:url)
+    ).to_s
+  end
+
+  def google_image
+    unless images.any? || Rails.env.test?
+      image = Image.new
+      remote_url = Google::Search::Image.new(
+        query: "#{title} recipe",
+        image_type: :photo,
+        image_size: :large,
+      ).try(:first).try(:uri)
+      image.remote_data_url = remote_url
+      image.recipe = self
+      images.first
+    end
   end
 end
