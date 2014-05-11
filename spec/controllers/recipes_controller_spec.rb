@@ -20,8 +20,6 @@ describe RecipesController do
       recipes_controller.stub(:recipe).and_return recipe
       recipes.stub(:page).and_return 1
       errors.stub(:full_messages).and_return ''
-      nil.stub :errors
-      nil.stub :full_messages
     end
 
     describe '#destroy' do
@@ -108,7 +106,7 @@ describe RecipesController do
 
     describe '#update' do
       it 'updates using safe parameters' do
-        recipe.should_receive(:update).with params
+        recipe.should_receive(:update).with(params).and_return true
         recipes_controller.update
       end
 

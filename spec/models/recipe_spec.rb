@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Recipe do
   let(:recipe) { Recipe.new }
-  let(:images) { mock 'images' }
-  let(:image) { mock 'image' }
+  let(:images) { double 'images' }
+  let(:image) { double 'image' }
   let(:env) { double 'env' }
 
   before(:each) do
