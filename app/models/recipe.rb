@@ -42,7 +42,9 @@ class Recipe < ActiveRecord::Base
       ).try(:first).try(:uri)
       image.remote_data_url = remote_url
       image.recipe = self
-      images.first
+      image.save
     end
+
+    images.first
   end
 end

@@ -71,6 +71,7 @@ describe Recipe do
       image.stub(:save).and_return true
       image.stub :remote_data_url=
       image.stub :recipe=
+      Google::Search::Image.stub(:new).and_return []
     end
 
     it 'adds an image to a recipe without any images' do
