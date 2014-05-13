@@ -12,14 +12,12 @@
       <%= render 'shared/header' %>
     </header>
 
-    <div class='container'>
-      <div class='row'>
-        <div class='col-md-8'>
-          <%= render 'shared/flash_messages' %>
-        </div>
+    <div class='col-md-8'>
+      <%= render 'shared/flash_messages' %>
+    </div>
 
-        <%= yield %>
-      </div>
+    <div class='container'>
+      <%= yield %>
     </div>
 
   </body>

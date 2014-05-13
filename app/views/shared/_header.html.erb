@@ -1,19 +1,16 @@
 <nav>
   <div class='navbar navbar-default' role='navigation'>
     <div class='container'>
-      <div class="navbar-header col-md-4">
+      <div class="navbar-header col-md-4 col-sm-3">
         <%= button_tag nil, class: 'btn btn-xs pull-right task_status navbar-toggle', data: { toggle: 'collapse', target: '.navbar-ex1-collapse' } do %>
           <%= fa_icon 'bars' %>
           <span class="sr-only">Toggle navigation</span>
         <% end %>
         <%= link_to 'akRecipes', :root, class: 'navbar-brand', id: 'logo' %>
-        <ul class='nav navbar-nav navbar-left col-md-4'>
-          <li><%= link_to 'About', :about %></li>
-        </ul>
       </div>
 
       <div class='collapse navbar-collapse navbar-ex1-collapse'>
-        <ul class='nav navbar-nav col-md-4'>
+        <ul class='nav navbar-nav col-md-4 col-sm-4'>
           <% if @recipes %>
             <li>
               <%= form_tag({ controller: :recipes, action: :index }, { class: 'navbar-form' }) do %>
@@ -25,7 +22,7 @@
           <% end %>
         </ul>
 
-        <ul class='nav navbar-nav navbar-right col-md-4'>
+        <ul class='nav navbar-nav navbar-right col-md-4 col-sm-5'>
           <% if current_user %>
             <li><%= link_to 'New Recipe', new_recipe_path %></li>
             <li><%= link_to 'Logout', :logout %></li>
