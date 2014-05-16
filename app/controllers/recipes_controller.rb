@@ -79,7 +79,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params
-      .permit(:recipe, :page_number)
+      .require(:recipe)
       .permit(
     :title,
     :body,
