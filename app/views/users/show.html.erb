@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<legend>
-  <%= @user.email %>
-</legend>
+<% legend @user.email %>
 
 <div class='span11'>
   <%= link_to 'Your Recipes', user_recipes_path(@user) %>

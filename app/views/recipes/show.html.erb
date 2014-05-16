@@ -1,29 +1,31 @@
-<legend>
-  <%= @recipe.title %>
-</legend>
+<%= legend @recipe.title %>
 
-<%= render 'image_carousel' %>
+<% if @recipe.images.present? %>
+  <%= render 'image_carousel' %>
+<% end %>
 
-<div class='body-text'>
+<div class='col-md-6 col-sm-6 col-xs-12'>
   <%= md @recipe.body %>
 </div>
 
-<%= link_to :root do %>
-  <%= fa_icon "arrow-left", text: "Back" %>
-<% end %>
-
-<% if current_user && @recipe.user == current_user %>
-  <%= link_to edit_recipe_path(@recipe) do %>
-    <%= fa_icon "pencil", text: "Edit Recipe" %>
+<div class='col-md-12 col-sm-12 col-xs-12'>
+  <%= link_to :root do %>
+    <%= fa_icon "arrow-left", text: "Back" %>
   <% end %>
 
-  <%= link_to new_comment_path(recipe_id: @recipe.id),
-    remote: true do %>
-    <%= fa_icon "plus", text: "Add Comment" %>
-  <% end %>
-<% end %>
+  <% if current_user && @recipe.user == current_user %>
+    <%= link_to edit_recipe_path(@recipe) do %>
+      <%= fa_icon "pencil", text: "Edit Recipe" %>
+    <% end %>
 
-<div id='comments'>
-  <legend>Comments</legend>
-<%= render 'comments' %>
+    <%= link_to new_comment_path(recipe_id: @recipe.id),
+      remote: true do %>
+      <%= fa_icon "plus", text: "Add Comment" %>
+    <% end %>
+  <% end %>
+</div>
+
+<div id='comments' class = 'col-md-12 col-sm-12 col-xs-12 container'>
+  <% legend 'Comments' %>
+  <%= render 'comments' %>
 </div>

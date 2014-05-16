@@ -27,4 +27,8 @@ module ApplicationHelper
       key
     end
   end
+
+  def legend text
+    "<legend class='col-md-12'>#{text}</legend>".html_safe
+  end
 end

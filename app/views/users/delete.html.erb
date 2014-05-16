@@ -1,4 +1,4 @@
-<legend>Are you sure you want to delete this user?</legend>
+<% legend 'Are you sure you want to delete this user?' %>
 <%= form_for @user, method: :delete do |f| %>
   <%= submit_tag 'Delete', class: 'btn btn-danger' %>
 <% end %>
