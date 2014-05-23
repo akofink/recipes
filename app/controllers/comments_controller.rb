@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new comment_params
     @comment.save!
-    redirect_to @comment.recipe
+    @recipe = @comment.recipe
+    render partial: 'recipes/comments'
   end
 
   def destroy
@@ -22,9 +23,10 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @comment.user = current_user
+    @comment.recipe = Recipe.find(params[:recipe_id]) if params[:recipe_id]
     render partial: 'form', locals: {
       comment: @comment,
-      recipe: Recipe.find(params[:recipe_id])
+      recipe: @comment.recipe
     }
   end
 
