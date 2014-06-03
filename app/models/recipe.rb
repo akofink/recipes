@@ -47,4 +47,12 @@ class Recipe < ActiveRecord::Base
 
     images.first
   end
+
+  def thumb_title
+    if title.length > 20
+      "#{title[0..12]}...#{title[-7..-1]}".try :html_safe
+    else
+      title
+    end
+  end
 end
