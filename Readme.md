@@ -1,8 +1,8 @@
 ## akRecipes ##
 
-[![Build Status](https://travis-ci.org/akofink/akrecipes.png?branch=master)](https://travis-ci.org/akofink/akrecipes)
-[![Code Climate](https://codeclimate.com/github/akofink/akrecipes.png)](https://codeclimate.com/github/akofink/akrecipes)
-[![Coverage Status](https://coveralls.io/repos/akofink/akrecipes/badge.png)](https://coveralls.io/r/akofink/akrecipes)
+[![Build Status](https://travis-ci.org/akofink/recipes.svg?branch=master)](https://travis-ci.org/akofink/recipes)
+[![Code Climate](https://codeclimate.com/github/akofink/recipes.png)](https://codeclimate.com/github/akofink/recipes)
+[![Coverage Status](https://coveralls.io/repos/akofink/recipes/badge.png)](https://coveralls.io/r/akofink/recipes)
 
 This is an open source recipes web site. I currently run it in production at http://recipes.akofink.com.
 
