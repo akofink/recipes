@@ -23,34 +23,37 @@ class Recipe < ActiveRecord::Base
   end
 
   def random_image
-    images.sample || google_image
+    @random_image ||= valid_images.sample || google_image
+  end
+
+  def valid_images
+    images.reject(&:valid?).map(&:destroy)
+    images
   end
 
   def random_thumbnail_url
-    (
-      random_image.try(:thumb).try(:url)
-    ).to_s
+    random_image.thumb.url
   end
 
   def google_image
-    unless images.any? || Rails.env.test?
-      image = Image.new
-      remote_url = Google::Search::Image.new(
+    image = Image.new
+
+    unless Rails.env.test?
+      image.remote_data_url = Google::Search::Image.new(
         query: "#{title} recipe",
         image_type: :photo,
         image_size: :large,
-      ).try(:first).try(:uri)
-      image.remote_data_url = remote_url
+      ).try(:to_a).try(:sample).try(:uri)
       image.recipe = self
       image.save
     end
 
-    images.first
+    image
   end
 
   def thumb_title
     if title.length > 20
-      "#{title[0..12]}...#{title[-7..-1]}".try :html_safe
+      "#{title[0..20]}".try :html_safe
     else
       title
     end

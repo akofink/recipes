@@ -7,6 +7,7 @@ gem 'rails', '>= 4.0'
 group :development do
   gem 'debugger'
   gem 'lipsum'
+  gem 'pry-rails'
 end
 
 group :test do

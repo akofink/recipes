@@ -5,7 +5,7 @@
       <%= link_to recipe, class: 'no-style' do %></td>
       <div class="thumbnail">
         <h4><%= recipe.thumb_title %></h4>
-        <%= image_tag recipe.random_thumbnail_url, class: 'img-responsive img-thumbnail' %>
+        <%= image_tag recipe.random_image.thumb.url, class: 'img-responsive img-thumbnail', style: 'margin-bottom: 9px' %>
       </div>
     <% end %>
   </div>
