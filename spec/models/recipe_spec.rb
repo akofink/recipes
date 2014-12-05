@@ -82,4 +82,11 @@ describe Recipe do
       recipe.google_image
     end
   end
+
+  describe '#thumb_title' do
+    it 'trucates titles to 20 characters' do
+      recipe.should_receive(:title).twice.and_return('a' * 25)
+      expect(recipe.thumb_title.length).to eq 21
+    end
+  end
 end
