@@ -1,0 +1,17 @@
+.col-md-6.col-sm-6.col-xs-12
+  #recipe-carousel.carousel.slide
+    - if @recipe.images.count > 1
+      %ol.carousel-indicators
+        - @recipe.images.each_with_index do |image, i|
+          %li{class: (image == @recipe.images.first) ? 'active' : '', "data-slide-to" => i, "data-target" => "#recipe-carousel"}
+    -# Carousel items
+    .carousel-inner
+      - @recipe.images.each do |image|
+        %div{class: "item #{(image == @recipe.images.first) ? 'active' : ''}"}
+          = image_tag image.data, class: 'img-responsive'
+    -# Carousel nav
+    - if @recipe.images.count > 1
+      %a.left.carousel-control{"data-slide" => "prev", :href => "#recipe-carousel"}
+        %span.glyphicon.glyphicon-chevron-left
+      %a.right.carousel-control{"data-slide" => "next", :href => "#recipe-carousel"}
+        %span.glyphicon.glyphicon-chevron-right

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ApplicationController do
   let(:application_controller) { ApplicationController.new }
-  let(:user) { mock_model User }
+  let(:user) { double User }
 
   describe 'private methods' do
     let(:session) { Hash.new }

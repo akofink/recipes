@@ -1,0 +1,15 @@
+- legend 'All Users'
+%table.table.table-hover
+  %thead
+    %tr
+      %th Id
+      %th Email
+  %tbody
+    - @users.each do |user|
+      %tr.table-link
+        %td= user.id
+        %td= link_to user.email, user, class: 'no-style button-link'
+%br/
+= link_to new_user_path do
+  %i.icon-plus-sign
+  New User

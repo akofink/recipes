@@ -1,0 +1,9 @@
+%h1 Editing user
+.col-md-6
+  = render 'form'
+  = link_back do
+    = fa_icon 'arrow-left', text: 'Back'
+  = link_to @user do
+    = fa_icon 'ban', text: 'Cancel'
+  = link_to @user, method: :delete, confirm: 'Delete your account?' do
+    = fa_icon 'times', text: 'Delete'

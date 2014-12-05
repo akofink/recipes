@@ -85,6 +85,6 @@ describe User do
 
   it 'determines admin status' do
     user.should_receive(:admin).and_return 1
-    user.admin?.should be_true
+    expect(user.admin?)
   end
 end

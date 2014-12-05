@@ -1,0 +1,8 @@
+- legend 'New recipe'
+= render 'form'
+= link_to @recipe do
+  %i.icon-ban-circle
+  Cancel
+= link_to @recipe, method: :delete do
+  %i.icon-remove
+  Delete

@@ -1,0 +1,15 @@
+- if @recipe.images.present?
+  = render 'image_carousel'
+.col-md-6.col-sm-6.col-xs-12
+  = legend @recipe.title
+.col-md-6.col-sm-6.col-xs-12
+  = md @recipe.body
+.col-md-12.col-sm-12.col-xs-12
+  = link_to :root do
+    = fa_icon "arrow-left", text: "Back"
+  - if current_user && @recipe.user == current_user
+    = link_to edit_recipe_path(@recipe) do
+      = fa_icon "pencil", text: "Edit Recipe"
+#comments.col-md-12.col-sm-12.col-xs-12.container
+  = legend 'Comments'
+  = render 'comments'

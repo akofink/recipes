@@ -9,7 +9,7 @@ describe 'Session' do
       password_confirmation: 'P@$$w0rD'
     )
 
-    User.login('a@b.c', 'P@$$w0rD').should be_true
+    expect(User.login('a@b.c', 'P@$$w0rD'))
   end
 
 end

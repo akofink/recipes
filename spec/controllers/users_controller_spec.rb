@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   let(:users_controller) { UsersController.new }
-  let(:user) { mock_model User }
+  let(:user) { double User }
   let (:errors) { [:errors] }
 
   describe 'public methods' do

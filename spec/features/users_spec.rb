@@ -22,6 +22,7 @@ feature 'User account' do
     fill_in 'email', with: 'a@b.c'
     fill_in 'password', with: 'Passw0rd'
     click_button 'Login'
+    click_link 'Account'
     click_link 'Edit'
     fill_in 'email', with: 'abc@b.c'
     click_button 'Update User'

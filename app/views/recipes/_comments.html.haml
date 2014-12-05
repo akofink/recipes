@@ -1,0 +1,10 @@
+#comments-list.col-md-6
+  = render 'comments/all', comments: @recipe.comments.chronological, recipe: @recipe
+  - if current_user
+    = link_to "/recipes/#{@recipe.id}/comments/new", |
+        remote: true,                                |
+        data: {                                      |
+          id: @recipe.id                             |
+      } do                                           |
+      = fa_icon :plus
+      New Comment

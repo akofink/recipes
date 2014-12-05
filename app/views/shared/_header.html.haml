@@ -1,0 +1,23 @@
+%nav
+  .navbar.navbar-default{:role => "navigation"}
+    .container
+      .navbar-header.col-md-4.col-sm-3
+        = button_tag nil, class: 'btn btn-xs pull-right task_status navbar-toggle', data: { toggle: 'collapse', target: '.navbar-ex1-collapse' } do
+          = fa_icon 'bars'
+          %span.sr-only Toggle navigation
+        = link_to 'akRecipes', :root, class: 'navbar-brand', id: 'logo'
+      .collapse.navbar-collapse.navbar-ex1-collapse
+        %ul.nav.navbar-nav.col-md-4.col-sm-4
+          - if @recipes
+            %li
+              = form_tag({ controller: :recipes, action: :index }, { class: 'navbar-form' }) do
+                .form-group
+                  = text_field_tag :query, nil, placeholder: 'filter recipes', class: 'form-control text-center', id: 'recipes-search'
+        %ul.nav.navbar-nav.navbar-right.col-md-4.col-sm-5
+          - if current_user
+            %li= link_to 'New Recipe', new_recipe_path
+            %li= link_to 'Logout', :logout
+            %li= link_to 'Account', :account
+          - else
+            %li= link_to 'Login', :login
+            %li= link_to 'Sign Up', :signup

@@ -1,0 +1,34 @@
+.row
+  = form_for @recipe, html: { multipart: true, class: 'recipe-form col-md-8' } do |form|
+    - if current_user.admin?
+      .form-group
+        = form.text_field :user_id, value: @recipe.user_id || current_user.id, class: 'form-control'
+    - else
+      .form_group
+        = form.hidden_field :user_id, value: @recipe.user_id || current_user.id
+    .form-group
+      = form.text_field :title, placeholder: "Title", class: 'form-control'
+    .form-group
+      = form.text_area :body,                                                                                                                  |
+        placeholder: "Ingredients and Directions",                                                                                             |
+        rows: "15",                                                                                                                            |
+        data: {                                                                                                                                |
+          content: 'You can use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">markdown</a> here.' |
+        },                                                                                                                                     |
+        class: "form-control",                                                                                                                 |
+        id: 'recipe-body'
+    = link_to 'Add Image', |
+      controller: :images, |
+      action: :new,        |
+      remote: true,        |
+      recipe: @recipe.id
+    #image-uploads.form-group
+      = form.fields_for :images, @recipe.images do |images_fields|
+        .form-group
+          %hr/
+          = image_tag images_fields.object.data
+          %br/
+          = images_fields.file_field :data, value: images_fields.object.data, class: 'form-control'
+          = images_fields.hidden_field :user_id, value: current_user.id
+    .actions
+      = form.submit class: 'btn btn-default'

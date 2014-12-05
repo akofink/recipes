@@ -8,17 +8,17 @@ group :development do
   gem 'debugger'
   gem 'lipsum'
   gem 'pry-rails'
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'guard-rails'
+  gem 'guard-rspec'
 end
 
 group :test do
   gem 'rspec-rails'
+  gem 'rspec-mocks'
   gem 'capybara'
   gem 'simplecov'
-  gem 'coveralls', require: false
-  gem 'guard-rails'
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  gem 'coveralls', require: false, github: 'lemurheavy/coveralls-ruby'
 end
 
 group :production do
@@ -27,24 +27,25 @@ group :production do
 end
 
 gem 'bootstrap-sass'
-gem 'bcrypt-ruby', '>= 3.0.0'
+gem 'bcrypt-ruby'
 gem 'carrierwave'
-gem 'coffee-rails', '>= 4.0.0'
+gem 'coffee-rails'
 gem 'fog'
 gem 'font-awesome-rails'
 gem 'google-search'
-gem 'jbuilder', '>= 1.0.1'
+gem 'haml-rails'
+gem 'jbuilder'
 gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
 gem "less-rails"
 gem 'pg'
 gem 'redcarpet'
 gem 'rmagick', :require => 'RMagick'
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails'
 gem 'sass'
 gem "therubyracer"
 gem 'turbolinks'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 gem 'will_paginate'
 
 group :doc do

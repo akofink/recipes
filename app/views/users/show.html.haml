@@ -1,0 +1,10 @@
+%p#notice= notice
+- legend @user.email
+.span11
+  = link_to 'Your Recipes', user_recipes_path(@user)
+%br/
+%br/
+= link_to :root do
+  = fa_icon 'arrow-left', text: 'Back'
+= link_to edit_user_path(@user) do
+  = fa_icon 'pencil', text: 'Edit'

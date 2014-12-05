@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe RecipesController do
   let(:recipes_controller) { RecipesController.new }
-  let(:user) { mock_model User }
-  let(:recipe) { mock_model Recipe }
+  let(:user) { double User }
+  let(:recipe) { double Recipe }
   let(:recipes) { double 'recipes' }
   let(:flash) { Hash.new }
   let(:params) { Hash.new }
@@ -113,6 +113,8 @@ describe RecipesController do
 
       it 'errs back to recipes#new' do
         recipe.stub(:update)
+        recipe.stub(:errors).and_return errors
+        errors.stub(:full_messages)
         recipes_controller.should_receive(:render).with :edit
         recipes_controller.update
       end

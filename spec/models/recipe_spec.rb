@@ -8,6 +8,7 @@ describe Recipe do
 
   before(:each) do
     recipe.stub(:images).and_return images
+    images.stub(:present?).and_return [:i]
   end
 
   it 'requires a title' do
@@ -35,17 +36,19 @@ describe Recipe do
 
   describe '#has_images' do
     it 'determines whether this recipe has images' do
-      recipe.has_images?.should be_true
+      expect(recipe.has_images?)
     end
   end
 
   describe '#random_image' do
     it 'selects a random image' do
+      recipe.stub(:valid_images).and_return images
       images.should_receive(:sample).and_return image
       recipe.random_image
     end
 
     it 'uses google to find an image if the recipe has no images' do
+      recipe.stub(:valid_images).and_return images
       images.stub(:sample)
       recipe.should_receive :google_image
       recipe.random_image
@@ -75,7 +78,7 @@ describe Recipe do
     end
 
     it 'adds an image to a recipe without any images' do
-      images.should_receive :first
+      Image.should_receive :new
       recipe.google_image
     end
   end

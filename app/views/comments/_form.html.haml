@@ -1,0 +1,7 @@
+= form_for comment, remote: true, authenticity_token: true do |form|
+  = form.hidden_field :recipe_id, value: recipe.id
+  = form.hidden_field :user_id, value: comment.user_id
+  .form-group
+    = form.text_area :body, class: 'form-control', rows: '5'
+  .actions
+    = form.submit class: 'btn btn-default'

@@ -11,7 +11,7 @@ describe AuthorizationHelper do
     let(:redirect_back) { }
 
     before(:each) do
-      current_user.stub(:admin?).and_return
+      current_user.stub(:admin?).and_return nil
     end
 
     it 'checks if the action is allowed' do
@@ -32,6 +32,7 @@ describe AuthorizationHelper do
 
   describe "#action_allowed?" do
     it 'defaults to nil (unauthorized)' do
+      stub(:params)
       action_allowed?.should be_nil
     end
   end
