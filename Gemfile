@@ -8,7 +8,6 @@ group :development do
   gem 'debugger'
   gem 'lipsum'
   gem 'pry-rails'
-  gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-rails'
   gem 'guard-rspec'
 end
