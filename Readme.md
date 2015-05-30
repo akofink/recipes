@@ -53,3 +53,7 @@ rails server
 ```
 
 Now visit [http://localhost:3000](http://localhost:3000)
+
+
+### Markdown Parsing
+[Emoji cheat sheet](http://www.emoji-cheat-sheet.com/)
