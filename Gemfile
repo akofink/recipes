@@ -1,11 +1,10 @@
-ruby '2.1.0'
+ruby '2.1.4'
 
 source 'https://rubygems.org'
 
 gem 'rails', '>= 4.0'
 
 group :development do
-  gem 'debugger'
   gem 'lipsum'
   gem 'pry-rails'
   gem 'guard-rails'
