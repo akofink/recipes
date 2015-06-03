@@ -58,28 +58,28 @@ describe UsersController do
 
     describe '#index' do
       it 'orders all users by email' do
-        User.should_receive(:order).with :email
+        expect(User).to receive(:order).with :email
         users_controller.index
       end
     end
 
     describe '#new' do
       it 'uses a new user' do
-        User.should_receive :new
+        expect(User).to receive :new
         users_controller.new
       end
     end
 
     describe '#edit' do
       it 'uses an existing user' do
-        users_controller.should_receive :set_user
+        expect(users_controller).to receive :set_user
         users_controller.edit
       end
     end
 
     describe '#delete' do
       it 'uses the existing user' do
-        users_controller.should_receive :set_user
+        expect(users_controller).to receive :set_user
         users_controller.delete
       end
     end
@@ -95,7 +95,7 @@ describe UsersController do
 
     describe '#set_user' do
       it 'finds the current user' do
-        User.should_receive(:find_by).and_return user
+        expect(User).to receive(:find_by).and_return user
         users_controller.send :set_user
       end
     end

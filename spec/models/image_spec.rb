@@ -10,7 +10,7 @@ describe Image do
     end
 
     it 'delegates to data' do
-      data.should_receive :thumb
+      expect(data).to receive :thumb
       image.thumb
     end
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Session' do
 
-  it 'should log in a user' do
+  it 'logs in a user' do
     User.create(
       email: 'a@b.c',
       password: 'P@$$w0rD',

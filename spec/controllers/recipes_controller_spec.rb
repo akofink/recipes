@@ -25,26 +25,26 @@ describe RecipesController do
 
     describe '#destroy' do
       it 'destroys the recipe' do
-        recipe.should_receive(:destroy).and_return recipe
+        expect(recipe).to receive(:destroy).and_return recipe
         recipes_controller.destroy
       end
 
       it 'redirects to the home page on success' do
         recipe.stub(:destroy).and_return recipe
-        recipes_controller.should_receive(:redirect_to).with :root
+        expect(recipes_controller).to receive(:redirect_to).with :root
         recipes_controller.destroy
       end
 
       it 'errs back' do
         recipe.stub(:destroy)
-        recipes_controller.should_receive :redirect_back
+        expect(recipes_controller).to receive :redirect_back
         recipes_controller.destroy
       end
     end
 
     describe '#edit' do
       it 'uses an existing recipe' do
-        recipes_controller.should_receive(:set_recipe)
+        expect(recipes_controller).to receive(:set_recipe)
         recipes_controller.edit
       end
     end
@@ -52,62 +52,62 @@ describe RecipesController do
     describe '#filter' do
       it 'uses the filter method of the Recipe model' do
         recipes_controller.stub(:paginated_recipes).and_return recipes
-        recipes.should_receive :filter
+        expect(recipes).to receive :filter
         recipes_controller.filter
       end
     end
 
     describe '#create' do
       it 'saves valid users' do
-        Recipe.should_receive(:new).and_return recipe
-        recipe.should_receive(:save).and_return true
+        expect(Recipe).to receive(:new).and_return recipe
+        expect(recipe).to receive(:save).and_return true
         recipes_controller.create
-        flash[:success].should_not be_nil
+        expect(flash[:success]).to_not be_nil
       end
 
       it 'handles invalid users' do
-        Recipe.should_receive(:new).and_return recipe
-        recipe.should_receive :save
-        recipe.should_receive(:errors).and_return errors
+        expect(Recipe).to receive(:new).and_return recipe
+        expect(recipe).to receive :save
+        expect(recipe).to receive(:errors).and_return errors
         recipes_controller.create
-        flash[:error].should_not be_nil
+        expect(flash[:error]).to_not be_nil
       end
     end
 
     describe '#index' do
       it 'orders the recipes of a user by title' do
-        recipes_controller.should_receive(:user)
+        expect(recipes_controller).to receive(:user)
           .at_least(:once).and_return user
-        user.should_receive(:recipes).and_return recipes
-        recipes.should_receive(:order).with(:title).and_return recipes
+        expect(user).to receive(:recipes).and_return recipes
+        expect(recipes).to receive(:order).with(:title).and_return recipes
         recipes_controller.index
       end
 
       it 'orders all recipes by title' do
-        recipes_controller.should_receive(:user).and_return nil
+        expect(recipes_controller).to receive(:user).and_return nil
         Recipe.stub(:all).and_return recipe
-        recipe.should_receive(:order).with(:title).and_return recipes
+        expect(recipe).to receive(:order).with(:title).and_return recipes
         recipes_controller.index
       end
     end
 
     describe '#new' do
       it 'uses a new recipe' do
-        Recipe.should_receive :new
+        expect(Recipe).to receive :new
         recipes_controller.new
       end
     end
 
     describe '#show' do
       it 'shows the current recipe' do
-        recipes_controller.should_receive :set_recipe
+        expect(recipes_controller).to receive :set_recipe
         recipes_controller.show
       end
     end
 
     describe '#update' do
       it 'updates using safe parameters' do
-        recipe.should_receive(:update).with(params).and_return true
+        expect(recipe).to receive(:update).with(params).and_return true
         recipes_controller.update
       end
 
@@ -115,7 +115,7 @@ describe RecipesController do
         recipe.stub(:update)
         recipe.stub(:errors).and_return errors
         errors.stub(:full_messages)
-        recipes_controller.should_receive(:render).with :edit
+        expect(recipes_controller).to receive(:render).with :edit
         recipes_controller.update
       end
     end

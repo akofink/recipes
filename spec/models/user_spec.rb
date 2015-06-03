@@ -28,12 +28,12 @@ describe User do
 
     addresses[:valid].each do |email|
       user.email = email
-      user.should be_valid
+      expect(user).to be_valid
     end
 
     addresses[:invalid].each do |email|
       user.email = email
-      user.should_not be_valid
+      expect(user).to_not be_valid
     end
   end
 
@@ -62,13 +62,13 @@ describe User do
     passwords[:valid].each do |password|
       user.password = password
       user.password_confirmation = password
-      user.should be_valid
+      expect(user).to be_valid
     end
 
     passwords[:invalid].each do |password|
       user.password = password
       user.password_confirmation = password
-      user.should_not be_valid
+      expect(user).to_not be_valid
     end
   end
 
@@ -79,12 +79,12 @@ describe User do
     )
 
     User.stub(:find_by).and_return(user)
-    user.should_receive(:authenticate)
+    expect(user).to receive(:authenticate)
     User.login('a@b.c', 'Pass123')
   end
 
   it 'determines admin status' do
-    user.should_receive(:admin).and_return 1
+    expect(user).to receive(:admin).and_return 1
     expect(user.admin?)
   end
 end
