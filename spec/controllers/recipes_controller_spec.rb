@@ -5,9 +5,9 @@ describe RecipesController do
   let(:user) { double User }
   let(:recipe) { double Recipe }
   let(:recipes) { double 'recipes' }
-  let(:flash) { Hash.new }
-  let(:params) { Hash.new }
-  let(:errors) { Hash.new }
+  let(:flash) { ActionController::Parameters.new }
+  let(:params) { ActionController::Parameters.new }
+  let(:errors) { ActionController::Parameters.new }
 
   describe 'actions' do
     before(:each) do

@@ -14,6 +14,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'rspec-mocks'
+  gem 'pry-rails'
   gem 'capybara'
   gem 'simplecov'
   gem 'coveralls', require: false, github: 'lemurheavy/coveralls-ruby'
@@ -35,13 +36,13 @@ gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
-gem "less-rails"
+gem 'less-rails'
 gem 'pg'
 gem 'redcarpet'
 gem 'rmagick', :require => 'RMagick'
 gem 'sass-rails'
 gem 'sass'
-gem "therubyracer"
+gem 'therubyracer'
 gem 'turbolinks'
 gem 'uglifier'
 gem 'will_paginate'
