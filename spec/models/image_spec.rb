@@ -6,7 +6,7 @@ describe Image do
   describe '#thumb' do
     let(:data) { double 'data' }
     before(:each) do
-      image.stub(:data).and_return data
+      allow(image).to receive(:data).and_return data
     end
 
     it 'delegates to data' do

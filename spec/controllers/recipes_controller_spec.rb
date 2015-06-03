@@ -11,16 +11,16 @@ describe RecipesController do
 
   describe 'actions' do
     before(:each) do
-      recipes_controller.stub(:flash).and_return flash
-      recipes_controller.stub(:params).and_return params
-      recipes_controller.stub :render
-      recipes_controller.stub :redirect_to
-      recipes_controller.stub(:set_recipe).and_return recipe
-      recipes_controller.stub(:recipe).and_return recipe
-      recipes.stub(:page).and_return 1
-      errors.stub(:full_messages).and_return ''
-      params.stub(:require).and_return params
-      params.stub(:permit).and_return params
+      allow(recipes_controller).to receive(:flash).and_return flash
+      allow(recipes_controller).to receive(:params).and_return params
+      allow(recipes_controller).to receive :render
+      allow(recipes_controller).to receive :redirect_to
+      allow(recipes_controller).to receive(:set_recipe).and_return recipe
+      allow(recipes_controller).to receive(:recipe).and_return recipe
+      allow(recipes).to receive(:page).and_return 1
+      allow(errors).to receive(:full_messages).and_return ''
+      allow(params).to receive(:require).and_return params
+      allow(params).to receive(:permit).and_return params
     end
 
     describe '#destroy' do
@@ -30,13 +30,13 @@ describe RecipesController do
       end
 
       it 'redirects to the home page on success' do
-        recipe.stub(:destroy).and_return recipe
+        allow(recipe).to receive(:destroy).and_return recipe
         expect(recipes_controller).to receive(:redirect_to).with :root
         recipes_controller.destroy
       end
 
       it 'errs back' do
-        recipe.stub(:destroy)
+        allow(recipe).to receive(:destroy)
         expect(recipes_controller).to receive :redirect_back
         recipes_controller.destroy
       end
@@ -51,7 +51,7 @@ describe RecipesController do
 
     describe '#filter' do
       it 'uses the filter method of the Recipe model' do
-        recipes_controller.stub(:paginated_recipes).and_return recipes
+        allow(recipes_controller).to receive(:paginated_recipes).and_return recipes
         expect(recipes).to receive :filter
         recipes_controller.filter
       end
@@ -85,7 +85,7 @@ describe RecipesController do
 
       it 'orders all recipes by title' do
         expect(recipes_controller).to receive(:user).and_return nil
-        Recipe.stub(:all).and_return recipe
+        allow(Recipe).to receive(:all).and_return recipe
         expect(recipe).to receive(:order).with(:title).and_return recipes
         recipes_controller.index
       end
@@ -112,9 +112,9 @@ describe RecipesController do
       end
 
       it 'errs back to recipes#new' do
-        recipe.stub(:update)
-        recipe.stub(:errors).and_return errors
-        errors.stub(:full_messages)
+        allow(recipe).to receive(:update)
+        allow(recipe).to receive(:errors).and_return errors
+        allow(errors).to receive(:full_messages)
         expect(recipes_controller).to receive(:render).with :edit
         recipes_controller.update
       end

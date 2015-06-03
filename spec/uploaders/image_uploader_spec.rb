@@ -5,9 +5,9 @@ describe ImageUploader do
   let(:model) { double 'model' }
 
   before(:each) do
-    image_uploader.stub(:model).and_return model
-    model.stub(:recipe_id).and_return 'recipe_id'
-    model.stub(:class).and_return 'Model'
+    allow(image_uploader).to receive(:model).and_return model
+    allow(model).to receive(:recipe_id).and_return 'recipe_id'
+    allow(model).to receive(:class).and_return 'Model'
   end
 
   describe '#store_dir' do

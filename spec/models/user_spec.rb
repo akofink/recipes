@@ -78,7 +78,7 @@ describe User do
       password: 'Pass123'
     )
 
-    User.stub(:find_by).and_return(user)
+    allow(User).to receive(:find_by).and_return(user)
     expect(user).to receive(:authenticate)
     User.login('a@b.c', 'Pass123')
   end

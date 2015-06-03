@@ -7,14 +7,14 @@ describe UsersController do
 
   describe 'public methods' do
     before(:each) do
-      users_controller.stub(:flash).and_return Hash.new
-      users_controller.stub :login_with_session
-      users_controller.stub :redirect_to
-      users_controller.stub :render
-      users_controller.stub(:user_params).and_return ActionController::Parameters.new
-      users_controller.stub(:set_user).and_return user
+      allow(users_controller).to receive(:flash).and_return Hash.new
+      allow(users_controller).to receive :login_with_session
+      allow(users_controller).to receive :redirect_to
+      allow(users_controller).to receive :render
+      allow(users_controller).to receive(:user_params).and_return ActionController::Parameters.new
+      allow(users_controller).to receive(:set_user).and_return user
       users_controller.instance_variable_set :@user, user
-      errors.stub(:full_messages).and_return ['']
+      allow(errors).to receive(:full_messages).and_return ['']
     end
 
     describe '#create' do
@@ -39,7 +39,7 @@ describe UsersController do
 
     describe '#update' do
       before(:each) do
-        user.stub :update
+        allow(user).to receive :update
       end
 
       it 'updates the model' do
@@ -89,8 +89,8 @@ describe UsersController do
     let(:params) { ActionController::Parameters.new }
 
     before(:each) do
-      users_controller.stub(:params).and_return params
-      params.stub :permit!
+      allow(users_controller).to receive(:params).and_return params
+      allow(params).to receive :permit!
     end
 
     describe '#set_user' do

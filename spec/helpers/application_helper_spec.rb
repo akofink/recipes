@@ -6,7 +6,7 @@ describe ApplicationHelper do
 
   describe '#link_back' do
     it 'links back' do
-      request.stub(:env) { {} }
+      allow(request).to receive(:env) { {} }
       expect(self).to receive(:link_to).and_return :root
       self.link_back
     end

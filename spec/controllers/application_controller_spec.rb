@@ -8,7 +8,7 @@ describe ApplicationController do
     let(:session) { Hash.new }
 
     before(:each) do
-      application_controller.stub(:session).and_return session
+      allow(application_controller).to receive(:session).and_return session
     end
 
     describe '#login_with_session' do
@@ -38,7 +38,7 @@ describe ApplicationController do
     describe '#redirect_back' do
       let(:request) { double 'request' }
       it 'redirects back using redirect_to' do
-        request.stub(:env).and_return Hash.new
+        allow(request).to receive(:env).and_return Hash.new
         expect(application_controller).to receive(:request).and_return request
         expect(application_controller).to receive(:redirect_to).with :root
         application_controller.send :redirect_back

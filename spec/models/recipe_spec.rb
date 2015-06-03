@@ -7,8 +7,8 @@ describe Recipe do
   let(:env) { double 'env' }
 
   before(:each) do
-    recipe.stub(:images).and_return images
-    images.stub(:present?).and_return [:i]
+    allow(recipe).to receive(:images).and_return images
+    allow(images).to receive(:present?).and_return [:i]
   end
 
   it 'requires a title' do
@@ -42,14 +42,14 @@ describe Recipe do
 
   describe '#random_image' do
     it 'selects a random image' do
-      recipe.stub(:valid_images).and_return images
+      allow(recipe).to receive(:valid_images).and_return images
       expect(images).to receive(:sample).and_return image
       recipe.random_image
     end
 
     it 'uses google to find an image if the recipe has no images' do
-      recipe.stub(:valid_images).and_return images
-      images.stub(:sample)
+      allow(recipe).to receive(:valid_images).and_return images
+      allow(images).to receive(:sample)
       expect(recipe).to receive :google_image
       recipe.random_image
     end
@@ -57,24 +57,24 @@ describe Recipe do
 
   describe '#random_thumbnail_url' do
     it 'returns a valid image url' do
-      recipe.stub(:random_image).and_return Image.new
+      allow(recipe).to receive(:random_image).and_return Image.new
       recipe.random_thumbnail_url.class == String
     end
   end
 
   describe '#google_image' do
     before(:each) do
-      recipe.stub(:title).and_return "kitty"
-      images.stub(:any?)
-      Rails.stub(:env).and_return env
-      env.stub(:test?)
-      env.stub(:production?)
-      images.stub(:first).and_return Image.new
-      Image.stub(:new).and_return image
-      image.stub(:save).and_return true
-      image.stub :remote_data_url=
-      image.stub :recipe=
-      Google::Search::Image.stub(:new).and_return []
+      allow(recipe).to receive(:title).and_return "kitty"
+      allow(images).to receive(:any?)
+      allow(Rails).to receive(:env).and_return env
+      allow(env).to receive(:test?)
+      allow(env).to receive(:production?)
+      allow(images).to receive(:first).and_return Image.new
+      allow(Image).to receive(:new).and_return image
+      allow(image).to receive(:save).and_return true
+      allow(image).to receive :remote_data_url=
+      allow(image).to receive :recipe=
+      allow(Google::Search::Image).to receive(:new).and_return []
     end
 
     it 'adds an image to a recipe without any images' do
