@@ -25,7 +25,7 @@ group :production do
 end
 
 gem 'bootstrap-sass'
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 gem 'carrierwave'
 gem 'coffee-rails'
 gem 'fog'
@@ -38,7 +38,7 @@ gem 'jquery-ui-sass-rails'
 gem 'less-rails'
 gem 'pg'
 gem 'redcarpet'
-gem 'rmagick', :require => 'RMagick'
+gem 'rmagick'
 gem 'sass-rails'
 gem 'sass'
 gem 'therubyracer'
