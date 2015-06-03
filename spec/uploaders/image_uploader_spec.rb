@@ -12,13 +12,13 @@ describe ImageUploader do
 
   describe '#store_dir' do
     it 'returns a valid storage directory' do
-      image_uploader.store_dir[/(\w+\/)+(\w+)?/].should_not be_nil
+      expect(image_uploader.store_dir[/(\w+\/)+(\w+)?/]).to_not be_nil
     end
   end
 
   describe '#extension_white_list' do
     it 'contains whitelisted upload formats' do
-      image_uploader.extension_white_list.should_not be_empty
+      expect(image_uploader.extension_white_list).to_not be_empty
     end
   end
 end

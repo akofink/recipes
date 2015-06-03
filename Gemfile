@@ -1,23 +1,22 @@
-ruby '2.1.0'
+ruby '2.1.4'
 
 source 'https://rubygems.org'
 
 gem 'rails', '>= 4.0'
 
-group :development do
-  gem 'debugger'
-  gem 'lipsum'
-  gem 'pry-rails'
+group :development, :test do
+  gem 'capybara'
+  gem 'coveralls', require: false, github: 'lemurheavy/coveralls-ruby'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'lipsum'
+  gem 'pry-rails'
+  gem 'rspec-mocks'
+  gem 'rspec-rails'
+  gem 'simplecov'
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'rspec-mocks'
-  gem 'capybara'
-  gem 'simplecov'
-  gem 'coveralls', require: false, github: 'lemurheavy/coveralls-ruby'
 end
 
 group :production do
@@ -36,13 +35,13 @@ gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
-gem "less-rails"
+gem 'less-rails'
 gem 'pg'
 gem 'redcarpet'
 gem 'rmagick', :require => 'RMagick'
 gem 'sass-rails'
 gem 'sass'
-gem "therubyracer"
+gem 'therubyracer'
 gem 'turbolinks'
 gem 'uglifier'
 gem 'will_paginate'

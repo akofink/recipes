@@ -17,7 +17,7 @@ describe Recipe do
       body: 'test'
     )
 
-    @recipe.should_not be_valid
+    expect(@recipe).to_not be_valid
   end
 
   it 'requires a body' do
@@ -26,11 +26,11 @@ describe Recipe do
       body: ''
     )
 
-    @recipe.should_not be_valid
+    expect(@recipe).to_not be_valid
   end
 
   it 'can be filtered' do
-    Recipe.should_receive(:where)
+    expect(Recipe).to receive(:where)
     Recipe.filter
   end
 
@@ -43,14 +43,14 @@ describe Recipe do
   describe '#random_image' do
     it 'selects a random image' do
       recipe.stub(:valid_images).and_return images
-      images.should_receive(:sample).and_return image
+      expect(images).to receive(:sample).and_return image
       recipe.random_image
     end
 
     it 'uses google to find an image if the recipe has no images' do
       recipe.stub(:valid_images).and_return images
       images.stub(:sample)
-      recipe.should_receive :google_image
+      expect(recipe).to receive :google_image
       recipe.random_image
     end
   end
@@ -78,14 +78,14 @@ describe Recipe do
     end
 
     it 'adds an image to a recipe without any images' do
-      Image.should_receive :new
+      expect(Image).to receive :new
       recipe.google_image
     end
   end
 
   describe '#thumb_title' do
     it 'trucates titles to 20 characters' do
-      recipe.should_receive(:title).twice.and_return('a' * 25)
+      expect(recipe).to receive(:title).twice.and_return('a' * 25)
       expect(recipe.thumb_title.length).to eq 21
     end
   end

@@ -15,25 +15,25 @@ describe AuthorizationHelper do
     end
 
     it 'checks if the action is allowed' do
-      should_receive :action_allowed?
+      expect(self).to receive :action_allowed?
       authorize
     end
 
     it 'redirects back on unsuccessful authorization' do
-      should_receive :redirect_back
+      expect(self).to receive :redirect_back
       authorize
     end
 
     it 'sets the flash warning message on unsuccessful authorization' do
       authorize
-      "#{flash[:warning]}"[/denied/].should_not be_nil
+      expect("#{flash[:warning]}"[/denied/]).to_not be_nil
     end
   end
 
   describe "#action_allowed?" do
     it 'defaults to nil (unauthorized)' do
       stub(:params)
-      action_allowed?.should be_nil
+      expect(action_allowed?).to be_nil
     end
   end
 end
