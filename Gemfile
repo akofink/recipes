@@ -4,20 +4,19 @@ source 'https://rubygems.org'
 
 gem 'rails', '>= 4.0'
 
-group :development do
-  gem 'lipsum'
-  gem 'pry-rails'
+group :development, :test do
+  gem 'capybara'
+  gem 'coveralls', require: false, github: 'lemurheavy/coveralls-ruby'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'lipsum'
+  gem 'pry-rails'
+  gem 'rspec-mocks'
+  gem 'rspec-rails'
+  gem 'simplecov'
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'rspec-mocks'
-  gem 'pry-rails'
-  gem 'capybara'
-  gem 'simplecov'
-  gem 'coveralls', require: false, github: 'lemurheavy/coveralls-ruby'
 end
 
 group :production do
