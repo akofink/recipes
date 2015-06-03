@@ -24,8 +24,9 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'bootstrap-sass'
+gem "rack-timeout"
 gem 'bcrypt'
+gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'coffee-rails'
 gem 'fog'
@@ -37,10 +38,11 @@ gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
 gem 'less-rails'
 gem 'pg'
+gem 'puma'
 gem 'redcarpet'
 gem 'rmagick'
-gem 'sass-rails'
 gem 'sass'
+gem 'sass-rails'
 gem 'therubyracer'
 gem 'turbolinks'
 gem 'uglifier'

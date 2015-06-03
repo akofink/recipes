@@ -18,8 +18,5 @@ test:
   password: rails
 
 production:
-  adapter: postgresql
-  host: localhost
-  database: recipes
-  user: rails
-  password: rails
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
