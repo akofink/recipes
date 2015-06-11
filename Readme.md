@@ -56,5 +56,5 @@ Now visit [http://localhost:3000](http://localhost:3000)
 
 
 ### Markdown Parsing
-[Emoji cheat sheet](http://www.emoji-cheat-sheet.com/)
-[Markdown cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- [Emoji cheat sheet](http://www.emoji-cheat-sheet.com/)
+- [Markdown cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
