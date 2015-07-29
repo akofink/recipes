@@ -46,7 +46,7 @@ From the shell:
 cp config/database.yml.example config/database.yml
 bundle exec rake db:drop db:setup db:test:prepare
 ```
-#### Start the Server
+#### Start the  Server
 
 ```sh
 rails server
