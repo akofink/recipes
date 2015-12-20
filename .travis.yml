@@ -3,6 +3,7 @@ rvm:
     - 2.1.4
 before_install: sudo apt-get install libqt4-dev
 before_script: 
+  - gem update bundler
   - cp config/database.yml.example config/database.yml
   - RAILS_ENV=test rake db:setup
 bundler_args: --without development
