@@ -9,18 +9,16 @@
     .form-group
       = form.text_field :title, placeholder: "Title", class: 'form-control'
     .form-group
-      = form.text_area :body,                                                                                                                  |
-        placeholder: "Ingredients and Directions",                                                                                             |
-        rows: "15",                                                                                                                            |
-        data: {                                                                                                                                |
-          content: 'You can use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">markdown</a> here.' |
-        },                                                                                                                                     |
-        class: "form-control",                                                                                                                 |
+      = form.text_area :body,
+        placeholder: "Ingredients and Directions",
+        rows: "15",
+        data: { content: @markdown_tip, rows: "15" },
+        class: "form-control",
         id: 'recipe-body'
-    = link_to 'Add Image', |
-      controller: :images, |
-      action: :new,        |
-      remote: true,        |
+    = link_to 'Add Image',
+      controller: :images,
+      action: :new,
+      remote: true,
       recipe: @recipe.id
     #image-uploads.form-group
       = form.fields_for :images, @recipe.images do |images_fields|

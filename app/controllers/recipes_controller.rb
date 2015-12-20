@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
+    recipes_form
 
     if @recipe.save
       flash[:success] = "The recipe was successfully created"
@@ -23,6 +24,7 @@ class RecipesController < ApplicationController
 
   def edit
     set_recipe
+    recipes_form
   end
 
   def filter
@@ -102,5 +104,28 @@ class RecipesController < ApplicationController
     when 'edit', 'update', 'destroy', 'delete'
       current_user && recipe.user == current_user
     end
+  end
+
+  private def recipes_form
+    @markdown_tip = <<tip
+You can use <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a> here.
+<br>
+<br>
+Example:
+<br>
+<br>
+# Ingredients
+<br>
+- yams
+<br>
+- alfalfa paste
+<br>
+<br>
+# Directions
+<br>
+1. This thing
+<br>
+2. The next thing
+tip
   end
 end
