@@ -1,13 +1,13 @@
 .comment
   %p.comment-body= comment.body
   - if comment.user == current_user
-    = link_to edit_comment_path(comment), |
-      remote: true,                       |
-      class: 'edit-comment' do            |
+    = link_to edit_comment_path(comment),
+      remote: true,
+      class: 'edit-comment' do
       = fa_icon "pencil", text: "Edit"
-    = link_to comment_path(comment),             |
-      method: 'delete',                          |
-      remote: true,                              |
-      data: { confirm: 'Delete your comment?' }, |
-      class: 'delete-comment' do                 |
+    = link_to comment_path(comment),
+      method: 'delete',
+      remote: true,
+      data: { confirm: 'Delete your comment?' },
+      class: 'delete-comment' do
       = fa_icon "times", text: "Delete"

@@ -7,18 +7,18 @@
   .form-group.input-group
     %span.input-group-addon
       = fa_icon 'key'
-    = f.password_field :password,                                           |
-      placeholder: "password",                                              |
-      title: 'At least one upper case, one lower case, and one non-letter', |
-      class: "instant-tooltip form-control",                                |
-      'data-container' => 'body'                                            |
+    = f.password_field :password,
+      placeholder: "password",
+      title: 'At least one upper case, one lower case, and one non-letter',
+      class: "instant-tooltip form-control",
+      'data-container' => 'body'
   .form-group.input-group
     %span.input-group-addon
       = fa_icon 'key'
-    = f.password_field :password_confirmation,                              |
-      placeholder: "password_confirmation",                                 |
-      title: 'At least one upper case, one lower case, and one non-letter', |
-      class: "instant-tooltip form-control",                                |
-      'data-container' => 'body'                                            |
+    = f.password_field :password_confirmation,
+      placeholder: "password_confirmation",
+      title: 'At least one upper case, one lower case, and one non-letter',
+      class: "instant-tooltip form-control",
+      'data-container' => 'body'
   .actions
     = f.submit class: 'btn'

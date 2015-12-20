@@ -7,9 +7,9 @@
     .form-group.input-group
       %span.input-group-addon
         = fa_icon 'key'
-      = password_field_tag :password, |
-        '',                           |
-        placeholder: "password",      |
-        class: 'form-control'         |
+      = password_field_tag :password,
+        '',
+        placeholder: "password",
+        class: 'form-control'
     .actions
       = submit_tag :Login, class: 'btn'
