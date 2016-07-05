@@ -4,5 +4,5 @@
     = link_to recipe, class: 'no-style' do
       .thumbnail
         %h4= recipe.thumb_title
-        = image_tag recipe.random_image.thumb.url, class: 'img-responsive img-thumbnail', style: 'margin-bottom: 9px'
+        = image_tag (recipe.random_image.thumb.url || ''), class: 'img-responsive img-thumbnail', style: 'margin-bottom: 9px'
 = will_paginate @recipes, class: 'pagination col-md-12 col-sm-12 col-xs-12 text-center'

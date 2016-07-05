@@ -1,4 +1,4 @@
-class Image < ActiveRecord::Base
+class Image < ApplicationRecord
   mount_uploader :data, ImageUploader
 
   validates_presence_of :data

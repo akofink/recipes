@@ -1,4 +1,4 @@
-class Recipe < ActiveRecord::Base
+class Recipe < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 

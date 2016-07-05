@@ -6,12 +6,14 @@ describe UsersController do
   let (:errors) { [:errors] }
 
   describe 'public methods' do
+    let(:user_params) { ActionController::Parameters.new }
+
     before(:each) do
       allow(users_controller).to receive(:flash).and_return Hash.new
       allow(users_controller).to receive :login_with_session
       allow(users_controller).to receive :redirect_to
       allow(users_controller).to receive :render
-      allow(users_controller).to receive(:user_params).and_return ActionController::Parameters.new
+      allow(users_controller).to receive(:user_params).and_return user_params
       allow(users_controller).to receive(:set_user).and_return user
       users_controller.instance_variable_set :@user, user
       allow(errors).to receive(:full_messages).and_return ['']
@@ -19,13 +21,13 @@ describe UsersController do
 
     describe '#create' do
       it 'creates a user from valid params' do
-        expect(User).to receive(:new).with({}).and_return user
+        expect(User).to receive(:new).with(user_params).and_return user
         expect(user).to receive(:save).and_return true
         users_controller.create
       end
 
       it 'handles invalid params' do
-        expect(User).to receive(:new).with({}).and_return user
+        expect(User).to receive(:new).with(user_params).and_return user
         expect(user).to receive(:save).and_return false
         users_controller.create
       end
