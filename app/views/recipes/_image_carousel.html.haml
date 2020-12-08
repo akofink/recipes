@@ -8,7 +8,7 @@
     .carousel-inner
       - @recipe.images.each do |image|
         %div{class: "item #{(image == @recipe.images.first) ? 'active' : ''}"}
-          = image_tag image.data, class: 'img-responsive'
+          = image_tag image.data_url, class: 'img-responsive'
     -# Carousel nav
     - if @recipe.images.count > 1
       %a.left.carousel-control{"data-slide" => "prev", :href => "#recipe-carousel"}
