@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
   end
 
   def filter
-    @recipes = paginated_recipes.filter params[:term]
+    @recipes = paginated_recipes.with_keyword params[:term]
     render partial: 'all'
   end
 

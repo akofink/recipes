@@ -12,7 +12,7 @@ class User < ApplicationRecord
       with: /.+@.+\..+/,
       message: 'must be the correct format'
     }
-  validates :password, unless: 'password.blank?',
+  validates :password, unless: -> { password.blank? },
     format: {
       with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*(_|[^\w]|\d)).+\z/,
       message: 'must meet the security requirements'

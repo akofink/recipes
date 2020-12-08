@@ -9,12 +9,12 @@ class Recipe < ApplicationRecord
 
   self.per_page = 12
 
-  scope :filter, ->(filter='') do
-    filter = "%#{filter}%"
+  scope :with_keyword, ->(kw='') do
+    kw = "%#{kw}%"
     where(
       "title ilike ? OR body ilike ?",
-      filter,
-      filter
+      kw,
+      kw
     )
   end
 
