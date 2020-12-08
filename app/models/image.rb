@@ -9,4 +9,10 @@ class Image < ApplicationRecord
   def thumb
     data.thumb
   end
+
+  class << self
+    def blank
+      Image.new(data: File.open('public/blank.png'))
+    end
+  end
 end

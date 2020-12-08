@@ -293,8 +293,6 @@ GEM
       representable (~> 3.0)
       retriable (>= 2.0, < 4.0)
       signet (~> 0.9)
-    google-search (1.0.3)
-      json
     googleauth (0.6.7)
       faraday (~> 0.12)
       jwt (>= 1.4, < 3.0)
@@ -579,7 +577,6 @@ DEPENDENCIES
   coveralls!
   fog
   font-awesome-rails
-  google-search
   guard-rails
   guard-rspec
   haml-rails

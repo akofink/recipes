@@ -49,10 +49,10 @@ describe RecipesController do
       end
     end
 
-    describe '#filter' do
-      it 'uses the filter method of the Recipe model' do
+    describe '#with_keyword' do
+      it 'uses the with_keyword method of the Recipe model' do
         allow(recipes_controller).to receive(:paginated_recipes).and_return recipes
-        expect(recipes).to receive :filter
+        expect(recipes).to receive :with_keyword
         recipes_controller.filter
       end
     end
