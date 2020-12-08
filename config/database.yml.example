@@ -7,15 +7,15 @@ development:
   adapter: postgresql
   host: localhost
   database: recipes_dev
-  user: rails
-  password: rails
+  user: postgres
+  password: password
 
 test:
   adapter: postgresql
   host: localhost
   database: recipes_test
-  user: rails
-  password: rails
+  user: postgres
+  password: password
 
 production:
   url:  <%= ENV["DATABASE_URL"] %>

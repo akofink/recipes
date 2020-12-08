@@ -1,8 +1,8 @@
-ruby '2.3.1'
+ruby '2.7.2'
 
 source 'https://rubygems.org'
 
-gem 'rails', '>= 4.0'
+gem 'rails'
 
 group :development, :test do
   gem 'capybara'
